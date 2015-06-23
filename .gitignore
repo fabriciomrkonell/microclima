@@ -1,0 +1,5 @@
+database/
+node_modules/
+public/css/
+public/vendor/
+public/js/
