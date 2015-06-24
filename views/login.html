@@ -5,31 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Microclima - Sensul</title>
     <link rel="stylesheet" href="/dist/css/login.min.css">
-    <body>
-      <div class="wrapper">
-        <div ng-controller="login-ctrl" class="block-center mt-xl wd-xl">
-          <div class="panel panel-dark panel-flat">
-            <div class="panel-heading text-center">
-              <a href="#"><img src="img/logo.png" alt="Image" class="block-center img-rounded"></a>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div ng-controller="login-ctrl" class="block-center mt-xl wd-xl">
+        <div class="panel panel-dark panel-flat">
+          <div class="panel-heading text-center">
+            <a href="#"><img src="img/logo.png" alt="Image" class="block-center img-rounded"></a>
+          </div>
+          <div class="panel-body">
+            <div class="form-group">
+              <input type="email" placeholder="Email" ng-model="account.username" class="form-control">
             </div>
-            <div class="panel-body">
-              <div class="form-group">
-                <input type="email" placeholder="Email" ng-model="account.username" class="form-control">
+            <div class="form-group">
+              <input type="password" placeholder="Senha" ng-model="account.password" class="form-control">
+            </div>
+            <div class="clearfix">
+              <div class="checkbox c-checkbox pull-left mt0">
+                <label>
+                  <input type="checkbox" ng-model="remember">
+                  <span class="fa fa-check"></span>Lembrar senha
+                </label>
               </div>
-              <div class="form-group">
-                <input type="password" placeholder="Senha" ng-model="account.password" class="form-control">
+              <div class="pull-right">
+                <a class="text-muted" href="#">Esqueceu sua senha?</a>
               </div>
-              <div class="clearfix">
-                <div class="checkbox c-checkbox pull-left mt0">
-                  <label>
-                    <input type="checkbox" ng-model="remember">
-                    <span class="fa fa-check"></span>Lembrar senha
-                  </label>
-                </div>
-                <div class="pull-right">
-                  <a class="text-muted" href="#">Esqueceu sua senha?</a>
-                </div>
-              </div>
+            </div>
             <button type="button" class="btn btn-block btn-primary mt-lg" ng-click="login(account, remember)">Entrar</button>
             <p class="pt-lg text-center">
               <span class="text-danger ng-hide" ng-show="error">Email ou senha inválidos!</span>

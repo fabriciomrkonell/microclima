@@ -6,24 +6,27 @@ module.exports = function(sequelize, DataTypes) {
     fullname: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: {
-          args: true,
-          msg: "Name must be atleast 3 characters in length"
-        }
-      }
+      unique: true
     },
     email: {
       type: DataTypes.STRING,
-      notNull: true,
+      allowNull: false,
       validate: {
-        isEmail: true
+        isEmail: {
+          args: true,
+          msg: "O e-mail não pode ser vazio!"
+        }
       }
     },
     password: {
       type: DataTypes.STRING,
-      notNull: true
+      allowNull: false,
+      validate: {
+        len: {
+          args: [6, 10],
+          msg: "A senha deve ser entre 6 á 10 caracteres!"
+        }
+      }
     }
   });
 

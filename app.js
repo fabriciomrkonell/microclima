@@ -6,14 +6,20 @@ var express = require('express'),
     favicon = require('serve-favicon'),
     logger = require('morgan'),
     cookieParser = require('cookie-parser'),
+    expressSession = require('express-session'),
     bodyParser = require('body-parser'),
-    pass = require('./config/pass'),
-    passport = require('passport');
+    pass = require('./config/pass');
 
 var routes = require('./routes/index'),
     users  = require('./routes/users');
 
 var app = express();
+
+var session = require('express-session')({
+  secret: 'microclima',
+  resave: false,
+  saveUninitialized: false
+});
 
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -21,8 +27,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/public')));
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(session);
+
+pass.initialize(app);
 
 app.use('/', routes);
 app.use('/users', users);
