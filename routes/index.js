@@ -6,7 +6,7 @@ var models = require('../models'),
 
 router.get('/', function(req, res, next) {
   if(req.user){
-    res.sendfile('views/home.html');
+    res.sendfile('views/index.html');
   }else{
     res.sendfile('views/login.html');
   }

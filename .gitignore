@@ -1,5 +1,6 @@
-database/
 node_modules/
 public/css/
+public/app/
 public/vendor/
 public/js/
+public/server/
