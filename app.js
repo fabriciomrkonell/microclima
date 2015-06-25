@@ -11,6 +11,7 @@ var express = require('express'),
     pass = require('./config/pass');
 
 var routes = require('./routes/index'),
+    angular = require('./routes/angular'),
     users  = require('./routes/users');
 
 var app = express();
@@ -32,6 +33,7 @@ app.use(session);
 pass.initialize(app);
 
 app.use('/', routes);
+app.use('/', angular);
 app.use('/users', users);
 
 app.use('/init-database', function(res, req, next){
