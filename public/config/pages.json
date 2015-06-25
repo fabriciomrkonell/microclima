@@ -1,0 +1,12 @@
+[
+  {
+    "name": "root",
+    "url": "/",
+    "parent": "",
+    "abstract": true,
+    "views": [{
+      "name": "header",
+      "templateUrl": "tpl/home.html"
+    }]
+  }
+]

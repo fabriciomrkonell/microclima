@@ -24,7 +24,8 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'public/dist/js/login.min.js': ['public/vendor/angular/angular.js', 'public/vendor/angularstorage/ngStorage.min.js', 'public/js/login.js']
+          'public/dist/js/login.min.js': ['public/vendor/angular/angular.js',
+          'public/vendor/angularstorage/ngStorage.min.js', 'public/js/login.js']
         }
       }
     }
