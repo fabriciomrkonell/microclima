@@ -7,7 +7,7 @@
   },
   "production": {
     "username": "root",
-    "password": "root",
+    "password": "32BEJddBYd",
     "database": "microclima",
     "dialect": "mysql"
   }
