@@ -1,0 +1,58 @@
+<div class="content-wrapper">
+	<div class="container-fluid">
+  	<div class="row">
+    	<div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">Estações</div>
+          <div class="panel-body">
+            <form role="form">
+              <div class="form-group">
+                <label>Descrição</label>
+                <input type="text" placeholder="Descrição" class="form-control" ng-model="data.description">
+              </div>
+              <div class="form-group">
+                <label>Latitude</label>
+                <input type="text" placeholder="Latitude" class="form-control" ng-model="data.latitude">
+              </div>
+              <div class="form-group">
+                <label>Longitude</label>
+                <input type="text" placeholder="Longitude" class="form-control" ng-model="data.longitude">
+              </div>
+              <button type="submit" class="btn btn-sm btn-default" ng-click="save(data)">Salvar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive table-bordered">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center" style="width: 100px">Código</th>
+                  <th>Descrição</th>
+                  <th class="text-center" style="width: 100px">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="station in stations">
+                  <td class="text-center" style="width: 100px">{{station.id}}</td>
+                  <td>{{station.description}}</td>
+                  <td class="text-center" style="width: 100px">
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(station)">
+                      <i class="icon-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="delete(station.id)">
+                      <i class="icon-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+   	</div>
+	</div>
+</div>

@@ -12,7 +12,10 @@ var express = require('express'),
 
 var routes = require('./routes/index'),
     angular = require('./routes/angular'),
-    users  = require('./routes/users');
+    users = require('./routes/users'),
+    sensors = require('./routes/sensors'),
+    stationssensors = require('./routes/stationssensors'),
+    stations = require('./routes/stations');
 
 var app = express();
 
@@ -34,7 +37,10 @@ pass.initialize(app);
 
 app.use('/', routes);
 app.use('/', angular);
-app.use('/users', users);
+app.use('/api/users', users);
+app.use('/api/sensors', sensors);
+app.use('/api/stations', stations);
+app.use('/api/stationssensors', stationssensors);
 
 app.use('/init-database', function(res, req, next){
   database.init(res, req, next);

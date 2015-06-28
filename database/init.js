@@ -6,8 +6,11 @@ var models  = require('../models'),
     router  = express.Router();
 
 exports.init = function(req, res, next) {
-  models.User.create({ fullname: 'Fabrício', email: 'fabricio@gmail.com', password: 'admin1234' }).then(function(data, error){
-  }).catch(function(err) {
-   	error.sendError(res, err);
- 	});
+  models.User.create({ fullname: 'Fabrício', email: 'fabricio@gmail.com', password: 'admin1234' });
+
+ 	models.Station.create({ latitude: 89.98, longitude: 97});
+
+ 	models.Station.findAll().then(function(data){
+ 		res.send(data);
+ 	})
 };

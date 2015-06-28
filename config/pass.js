@@ -7,7 +7,7 @@ var passport = require('passport'),
 function security() { };
 
 function validAuthentication(req, res, next){
-  if(res.isAuthenticated()) {
+  if(req.user){
     next();
   }else{
     res.redirect('/');

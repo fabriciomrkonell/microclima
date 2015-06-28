@@ -4,38 +4,77 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Microclima - Sensul</title>
-    <link rel="stylesheet" href="/dist/css/index.min.css">
+    <!--<link rel="stylesheet" href="/dist/css/index.min.css">-->
+    <link rel="stylesheet" href="app/css/bootstrap.css">
+    <link rel="stylesheet" href="app/css/theme-a.css">
+    <link rel="stylesheet" href="app/css/app.css">
+    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   </head>
-  <body class="aside-collapsed">
+  <body class="aside-collapsed ng-cloak">
     <div class="wrapper">
-      <nav class="navbar topnavbar">
-        <div class="navbar-header">
+      <nav class="navbar topnavbar navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="#" class="navbar-brand">
-            <div class="brand-logo">
-              <img src="app/img/logo.png" alt="App Logo" class="img-responsive">
-            </div>
-            <div class="brand-logo-collapsed">
-              <img src="app/img/logo-single.png" alt="App Logo" class="img-responsive">
-            </div>
-          </a>
-        </div>
-        <div class="navbar-collapse collapse" aria-expanded="false">
-          <ul class="nav navbar-nav">
-            <li><a ng-href="/">Início</a></li>
-            <li><a ng-href="/maps">Mapa</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" ng-click="logout()">Sair</a></li>
-          </ul>
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand">
+              <div class="brand-logo">
+                <img src="app/img/logo.png" alt="App Logo" class="img-responsive">
+              </div>
+              <div class="brand-logo-collapsed">
+                <img src="app/img/logo-single.png" alt="App Logo" class="img-responsive">
+              </div>
+            </a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li><a ng-href="/">Início</a></li>
+              <li><a ng-href="/maps">Mapa</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Relação&nbsp;&nbsp;<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a ng-href="/stationsensor">Estação / Sensores</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Cadastro&nbsp;&nbsp;<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a ng-href="/sensor">Sensores</a></li>
+                  <li><a ng-href="/station">Estações</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Configurações&nbsp;&nbsp;<span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a ng-href="/usergroup">Grupos de usuários</a></li>
+                  <li><a ng-href="/user">Usuários</a></li>
+                  <li><a ng-href="/page">Páginas</a></li>
+                  <li><a href="#" ng-click="logout()">Sair</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
+      <div class="uk-notify uk-notify-bottom-center ng-hide" style="display: block;" ng-show="notity.error == true" ng-click="hideError('error')">
+        <div class="uk-notify-message alert-dismissable alert alert-danger" style="opacity: 1; margin-top: 0px; margin-bottom: 10px;">
+          <a class="close">×</a>
+          <div>{{notity.message}}</div>
+        </div>
+      </div>
       <section style="margin-bottom: 0px !important" ng-view></section>
     </div>
     <script data-main="js/main" src="vendor/require/require.js"></script>

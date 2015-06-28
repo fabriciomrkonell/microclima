@@ -1,0 +1,50 @@
+<div class="content-wrapper">
+	<div class="container-fluid">
+  	<div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">Sensores</div>
+          <div class="panel-body">
+            <form role="form">
+              <div class="form-group">
+                <label>Descrição</label>
+                <input type="text" placeholder="Descrição" class="form-control" ng-model="data.description">
+              </div>
+              <button type="button" ng-click="save(data)" class="btn btn-sm btn-default">Salvar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7">
+        <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive table-bordered">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="text-center" style="width: 100px">Código</th>
+                  <th>Descrição</th>
+                  <th class="text-center" style="width: 100px">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="sensor in sensors">
+                  <td class="text-center" style="width: 100px">{{sensor.id}}</td>
+                  <td>{{sensor.description}}</td>
+                  <td class="text-center" style="width: 100px">
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(sensor)">
+                      <i class="icon-pencil"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="delete(sensor.id)">
+                      <i class="icon-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+   	</div>
+	</div>
+</div>

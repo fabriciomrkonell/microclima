@@ -207,11 +207,34 @@ ul {
   margin-bottom: 10.5px;
 }
 
+ul ul {
+  margin-bottom: 0;
+}
+
+.container,
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+@media (min-width:768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width:992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width:1200px) {
+  .container {
+    width: 1170px;
+  }
 }
 
 .row {
@@ -258,6 +281,71 @@ ul {
 
 .collapse {
   display: none;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle:focus {
+  outline: 0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  background-clip: padding-box;
+}
+
+.dropdown-menu>li>a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.52857143;
+  color: #5f5f5f;
+  white-space: nowrap;
+}
+
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+  text-decoration: none;
+  color: #2f3342;
+  background-color: #fafbfc;
+}
+
+@media (min-width:768px) {
+  .navbar-right .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
 }
 
 .nav {
@@ -324,6 +412,53 @@ ul {
     padding-bottom: 0;
     overflow: visible!important;
   }
+
+  .navbar-fixed-top .navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.navbar-fixed-top .navbar-collapse {
+  max-height: 340px;
+}
+
+@media (max-device-width:480px) and (orientation:landscape) {
+  .navbar-fixed-top .navbar-collapse {
+    max-height: 200px;
+  }
+}
+
+.container>.navbar-collapse,
+.container>.navbar-header {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+@media (min-width:768px) {
+  .container>.navbar-collapse,
+  .container>.navbar-header {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.navbar-fixed-top {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+@media (min-width:768px) {
+  .navbar-fixed-top {
+    border-radius: 0;
+  }
+}
+
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 1px;
 }
 
 .navbar-brand {
@@ -337,6 +472,12 @@ ul {
 .navbar-brand:focus,
 .navbar-brand:hover {
   text-decoration: none;
+}
+
+@media (min-width:768px) {
+  .navbar>.container .navbar-brand {
+    margin-left: -15px;
+  }
 }
 
 .navbar-toggle {
@@ -397,6 +538,12 @@ ul {
     padding-top: 17px;
     padding-bottom: 17px;
   }
+}
+
+.navbar-nav>li>.dropdown-menu {
+  margin-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 
 @media (min-width:768px) {
@@ -478,6 +625,8 @@ ul {
 
 .container-fluid:after,
 .container-fluid:before,
+.container:after,
+.container:before,
 .nav:after,
 .nav:before,
 .navbar-collapse:after,
@@ -495,6 +644,7 @@ ul {
 }
 
 .container-fluid:after,
+.container:after,
 .nav:after,
 .navbar-collapse:after,
 .navbar-header:after,
@@ -540,16 +690,6 @@ ul {
   src: local('Source Sans Pro Italic'),local('SourceSansPro-It'),url(http://fonts.gstatic.com/s/sourcesanspro/v9/M2Jd71oPJhLKp0zdtTvoM0DauxaEVho0aInXGvhmB4k.ttf) format('truetype');
 }
 
-/*!
- *
- * Angle - Bootstrap Admin App + AngularJS
- *
- * Author: @themicon_co
- * Website: http://themicon.co
- * License: http://support.wrapbootstrap.com/knowledge_base/topics/usage-licenses
- *
- */
-
 :focus,
 a {
   outline: 0!important;
@@ -578,6 +718,10 @@ a {
 .progress .progress-bar {
   -webkit-box-shadow: 0 0 0 #000;
   box-shadow: 0 0 0 #000;
+}
+
+.dropdown-menu {
+  border-radius: 3px;
 }
 
 .nav {
@@ -808,6 +952,10 @@ x:-o-prefocus {
   background-clip: content-box;
 }
 
+.dropdown>a {
+  position: relative;
+}
+
 .widget {
   margin-bottom: 20px;
   border: 0;
@@ -816,11 +964,6 @@ x:-o-prefocus {
 .widget.panel {
   overflow: hidden;
 }
-
-/*!
- * table-grid (http://mdo.github.io/table-grid)
- * Released under MIT, (c) 2014 Mark Otto
- */
 
 body .bootstrap-tagsinput::-moz-placeholder {
   color: #b7bac9;
