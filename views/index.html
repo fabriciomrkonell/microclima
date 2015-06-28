@@ -4,14 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Microclima - Sensul</title>
-    <!--<link rel="stylesheet" href="/dist/css/index.min.css">-->
     <link rel="stylesheet" href="app/css/bootstrap.css">
     <link rel="stylesheet" href="app/css/theme-a.css">
     <link rel="stylesheet" href="app/css/app.css">
     <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   </head>
-  <body class="aside-collapsed ng-cloak">
+  <body class="aside-collapsed">
     <div class="wrapper">
       <nav class="navbar topnavbar navbar-fixed-top">
         <div class="container">
@@ -69,7 +68,7 @@
           </div>
         </div>
       </nav>
-      <div class="uk-notify uk-notify-bottom-center ng-hide" style="display: block;" ng-show="notity.error == true" ng-click="hideError('error')">
+      <div class="uk-notify uk-notify-bottom-center ng-hide ng-cloak" style="display: block;" ng-show="notity.error == true" ng-click="hideError('error')">
         <div class="uk-notify-message alert-dismissable alert alert-danger" style="opacity: 1; margin-top: 0px; margin-bottom: 10px;">
           <a class="close">×</a>
           <div>{{notity.message}}</div>
