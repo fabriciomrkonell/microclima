@@ -1,7 +1,7 @@
 'use strict';
 
 define(['js/index', 'morris'], function (app, morris) {
-	app.controller('maps', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope){
+	app.controller('maps', ['$scope', '$http', '$rootScope', 'Views', function($scope, $http, $rootScope, Views){
 
 		var defaultHeight = 129,
         image = 'img/flag.png';
@@ -24,11 +24,10 @@ define(['js/index', 'morris'], function (app, morris) {
             if($scope.data.StationSensors.length > 0){
               $scope.configurations.active = $scope.data.StationSensors[0].SensorId;
               $('#modal').modal();
-              $scope.$digest();
             }else{
               alert('error', 'Não existe nenhum sensor nesta estação!');
-              $rootScope.$digest();
             }
+            $rootScope.$digest();
           }
         })(marker, i));
 
@@ -36,20 +35,11 @@ define(['js/index', 'morris'], function (app, morris) {
     });
 
     $('#modal').on('shown.bs.modal', function (){
-      new Morris.Line({
-        element: 'charts',
-        data: [
-          { year: '2008', value: 20 },
-          { year: '2009', value: 10 },
-          { year: '2010', value: 5 },
-          { year: '2011', value: 5 },
-          { year: '2012', value: 20 }
-        ],
-        xkey: 'year',
-        ykeys: ['value'],
-        labels: ['Value']
-      });
-      $('#tab-content').css('display', 'flex');
+      //$scope.showView($scope.type);
+    });
+
+    $('#modal').on('hidden.bs.modal', function (){
+      setDiv();
     });
 
 		$("#map").height($(window).height() - defaultHeight);
@@ -72,15 +62,41 @@ define(['js/index', 'morris'], function (app, morris) {
       data: {},
       configurations:{
         active: 0
-      }
+      },
+      loader: true,
+      type: 'Bar',
+      types: [
+        { name: 'Barra', value: 'Bar' },
+        { name: 'Linha', value: 'Line' }
+      ]
     });
 
     $scope.getSensorData = function(sensor, station){
       $scope.configurations.active = sensor;
     };
 
-    $scope.teste2 = "dasdasd";
-    $scope.teste = "<b>{{teste2}}</b>"
+    $scope.showView = function(type){
+      setDiv();
+      Views.showView(type);
+      showView();
+    };
+
+    function showView(){
+      $('#tab-content').css('display', 'flex');
+      $scope.loader = false;
+      if(!$scope.$$phase){
+        $scope.$digest();
+      }
+    };
+
+    function setDiv(){
+      $("#charts").text("");
+      $('#tab-content').css('display', '');
+      $scope.loader = true;
+      if(!$scope.$$phase){
+        $scope.$digest();
+      }
+    };
 
 	}]);
 });

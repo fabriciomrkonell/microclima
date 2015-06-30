@@ -32,19 +32,30 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 
 	}]);
 
-	angular.module('sensul').directive('compile', ['$compile', function ($compile) {
-    return function(scope, element, attrs) {
-    	scope.$watch(
-      	function(scope) {
-        	return scope.$eval(attrs.compile);
-       	},
-       	function(value) {
-       		element.html(value);
-          $compile(element.contents())(scope);
-        }
-      );
-    };
-	}]);
+	angular.module('sensul').service('Views', function(){
+  	this.showView = function(type){
+
+  		var configs = {
+        element: 'charts',
+        data: [
+          { year: '2008', value: 20 },
+          { year: '2009', value: 10 },
+          { year: '2010', value: 5 },
+          { year: '2011', value: 5 },
+          { year: '2012', value: 20 }
+        ],
+        xkey: 'year',
+        ykeys: ['value'],
+        labels: ['Value']
+  		};
+
+    	if(type == 'Line'){
+    		new Morris.Line(configs);
+    	}else{
+    		new Morris.Bar(configs);
+    	}
+  	}
+	});
 
 	angular.module('sensul').config(function ($locationProvider, $routeProvider, $httpProvider) {
 

@@ -27,12 +27,22 @@
         </ul>
         <div class="tab-content" id="tab-content">
           <div class="tab-pane active">
-            <div id="charts" class="col-md-12" style="height: 200px" ng-show="true"></div>
-            <div class="panel-body loader-demo">
+            <div class="panel-body loader-demo" ng-show="loader">
               <div class="ball-clip-rotate">
                 <div></div>
               </div>
             </div>
+            <div class="row" ng-show="!loader">
+              <div class="col-sm-4 col-md-offset-4">
+                <div class="form-group text-center">
+                  <label>Tipo de visualização</label>
+                  <select class="form-control text-center" ng-model="type" ng-change="showView(type)">
+                    <option value="{{typeValue.value}}" ng-repeat="typeValue in types">{{typeValue.name}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div id="charts" class="col-md-12" style="height: 200px"></div>
           </div>
         </div>
       </div>
