@@ -6,11 +6,19 @@ var models  = require('../models'),
     router  = express.Router();
 
 exports.init = function(req, res, next) {
-  models.User.create({ fullname: 'Fabrício', email: 'fabricio@gmail.com', password: 'admin1234' });
 
- 	models.Station.create({ latitude: 89.98, longitude: 97});
-
- 	models.Station.findAll().then(function(data){
- 		res.send(data);
- 	})
+	if(req.param('init') == 'microclima'){
+		models.User.findAll().then(function(data){
+			if(data.length > 0){
+				res.send({ error: 1, message: 'Já existe um usuário cadastrado!'});
+			}else{
+				models.Group.create({ description: 'Normal' }).then(function(entity){
+					models.User.create({ fullname: 'Fabrício', email: 'fabricioronchii@gmail.com', password: 'admin1234', GroupId: entity.id });
+					res.send({ error: 0, message: 'Inicialização completa!'});
+				});
+			}
+		});
+	}else{
+		res.send({ error: 1, message: 'Inicialização inválida!'});
+	}
 };

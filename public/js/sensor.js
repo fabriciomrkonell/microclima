@@ -23,6 +23,10 @@ define(['js/index'], function (app) {
 
 		getAll();
 
+		$scope.getAll = function(){
+			getAll();
+		};
+
 		$scope.save = function(sensor){
 			$http.post('/api/sensors', sensor).success(function(){
 				getAll();

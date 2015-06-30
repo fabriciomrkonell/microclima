@@ -6,8 +6,8 @@ var models  = require('../models'),
     router  = express.Router();
 
 router.get('/', function(req, res) {
-  models.User.findAll({
-    attributes: ['id', 'fullname', 'email', 'GroupId']
+  models.Group.findAll({
+    attributes: ['id', 'description']
   }).then(function(data) {
     res.send({ error: 0, data: data });
   }).catch(function(err) {
@@ -17,13 +17,12 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
   if(req.body.id){
-    models.User.find({
-      attributes: ['id', 'fullname', 'email', 'GroupId'],
+    models.Group.find({
+      attributes: ['id', 'description'],
       where: {
         id: req.body.id
       }
     }).then(function(entity) {
-      delete req.body.password;
       entity.updateAttributes(req.body).then(function(data) {
         res.send({ error: 0, data: data });
       }).catch(function(err) {
@@ -33,7 +32,7 @@ router.post('/', function(req, res) {
       error.sendError(res, err);
     });
   }else{
-    models.User.create(req.body).then(function(data) {
+    models.Group.create(req.body).then(function(data) {
       res.send({ error: 0, data: data });
     }).catch(function(err) {
       error.sendError(res, err);
@@ -42,7 +41,7 @@ router.post('/', function(req, res) {
 });
 
 router.delete('/:id', function(req, res) {
-  models.User.find({
+  models.Group.find({
     attributes: ['id'],
     where: {
       id: req.param('id')

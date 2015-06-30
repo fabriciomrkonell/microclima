@@ -1,9 +1,9 @@
 <div class="content-wrapper">
-	<div class="container-fluid">
-  	<div class="row">
+  <div class="container-fluid">
+    <div class="row">
       <div class="col-sm-5">
         <div class="panel panel-default">
-          <div class="panel-heading">Sensores</div>
+          <div class="panel-heading">Grupos de usuários</div>
           <div class="panel-body">
             <form role="form">
               <div class="form-group">
@@ -29,14 +29,14 @@
                 </tr>
               </thead>
               <tbody>
-                <tr ng-repeat="sensor in sensors">
-                  <td class="text-center" style="width: 100px">{{sensor.id}}</td>
-                  <td>{{sensor.description}}</td>
+                <tr ng-repeat="group in groups">
+                  <td class="text-center" style="width: 100px">{{group.id}}</td>
+                  <td>{{group.description}}</td>
                   <td class="text-center" style="width: 100px">
-                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(sensor)">
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(group)">
                       <i class="icon-pencil"></i>
                     </button>
-                    <button type="button" class="btn btn-danger btn-xs" ng-click="delete(sensor.id)">
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="delete(group.id)">
                       <i class="icon-trash"></i>
                     </button>
                   </td>
@@ -46,6 +46,6 @@
           </div>
         </div>
       </div>
-   	</div>
-	</div>
+    </div>
+  </div>
 </div>

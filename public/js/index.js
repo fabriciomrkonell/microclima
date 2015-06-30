@@ -1,10 +1,10 @@
 'use strict';
 
-define(['angularAMD', 'ngRoute'], function (angularAMD, ngRoute) {
+define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ngAnimate) {
 
-	angular.module('sensul', ['ngRoute']);
+	angular.module('sensul', ['ngRoute', 'ngAnimate']);
 
-	angular.module('sensul').run(['$rootScope', function($rootScope){
+	angular.module('sensul').run(['$rootScope', '$route', function($rootScope){
 
 		angular.extend($rootScope, {
 			notity: {
@@ -32,6 +32,20 @@ define(['angularAMD', 'ngRoute'], function (angularAMD, ngRoute) {
 
 	}]);
 
+	angular.module('sensul').directive('compile', ['$compile', function ($compile) {
+    return function(scope, element, attrs) {
+    	scope.$watch(
+      	function(scope) {
+        	return scope.$eval(attrs.compile);
+       	},
+       	function(value) {
+       		element.html(value);
+          $compile(element.contents())(scope);
+        }
+      );
+    };
+	}]);
+
 	angular.module('sensul').config(function ($locationProvider, $routeProvider, $httpProvider) {
 
 	 	$locationProvider.html5Mode(true);
@@ -52,11 +66,11 @@ define(['angularAMD', 'ngRoute'], function (angularAMD, ngRoute) {
 	     	controller: 'user',
 	      controllerUrl: 'js/user'
 	    })
-		).when("/usergroup",
+		).when("/group",
 	    angularAMD.route({
-	    	templateUrl: 'tpl/usergroup.html',
-	     	controller: 'usergroup',
-	      controllerUrl: 'js/usergroup'
+	    	templateUrl: 'tpl/group.html',
+	     	controller: 'group',
+	      controllerUrl: 'js/group'
 	    })
 		).when("/sensor",
 	    angularAMD.route({
@@ -84,27 +98,19 @@ define(['angularAMD', 'ngRoute'], function (angularAMD, ngRoute) {
 	    })
 		);
 
-		var interceptor = function($window){
-      function success(response){
-      	if(response.data){
-      		if(response.data.error == 1){
-        		return error(response);
-        	}
-      	}
-       	return response;
-      };
-      function error(response) {
-        if(response.data.error == 1){
-          alert('error', response.data.message);
-        }
-        return response;
-      };
-      return function(promise) {
-        return promise.then(success, error);
-      }
-    }
-
-    $httpProvider.responseInterceptors.push(interceptor);
+		$httpProvider.interceptors.push(function($q) {
+  		return {
+    		'response': function(response) {
+    			if(response.data){
+	      		if(response.data.error == 1){
+	      			alert('error', response.data.message);
+	        		return $q.reject(response);
+	        	}
+	      	}
+	       	return response;
+    		}
+  		};
+		});
 
 	});
 

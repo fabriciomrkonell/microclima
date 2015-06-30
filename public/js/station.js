@@ -27,6 +27,10 @@ define(['js/index'], function (app) {
 
 		getAll();
 
+		$scope.getAll = function(){
+			getAll();
+		};
+
 		$scope.save = function(station){
 			$http.post('/api/stations', station).success(function(){
 				getAll();

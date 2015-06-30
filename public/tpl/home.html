@@ -1,52 +1,123 @@
 <div class="content-wrapper">
 	<div class="row ng-scope">
-   	<div class="col-lg-4">
-    	<div class="panel widget">
-     		<div class="panel-body">
-       		<div class="text-right text-muted">
-          	<em class="fa fa-gamepad fa-2x"></em>
-         	</div>
-        	<h3 class="mt0">99.999</h3>
-       		<p class="text-muted">Games played last month</p>
-        	<div class="progress progress-striped progress-xs">
-         		<div class="progress-bar progress-bar-warning progress-60">
-            	<span class="sr-only">60% Complete</span>
-          	</div>
-        	</div>
-      	</div>
-     	</div>
-   	</div>
-   	<div class="col-lg-4">
-   		<div class="panel widget">
-      	<div class="panel-body">
-        	<div class="text-right text-muted">
-          	<em class="fa fa-coffee fa-2x"></em>
-         	</div>
-        	<h3 class="mt0">300</h3>
-         	<p class="text-muted">Coffee cups per day</p>
-         	<div class="progress progress-striped progress-xs">
-          	<div class="progress-bar progress-bar-green progress-80">
-            	<span class="sr-only">80% Complete</span>
-           	</div>
-         	</div>
-      	</div>
+   	<div class="col-lg-6">
+  <div class="panel widget">
+    <div class="row row-table">
+      <div class="col-md-2 col-sm-3 col-xs-6 text-center bg-info pv-xl">
+        <div skycon="" width="80" height="80"><canvas id="clear-day" width="80" height="80"></canvas></div>
       </div>
-   	</div>
-   	<div class="col-lg-4">
-      <div class="panel widget">
-        <div class="panel-body">
-         	<div class="text-right text-muted">
-           	<em class="fa fa-upload fa-2x"></em>
-         	</div>
-        	<h3 class="mt0">1000 Gb</h3>
-         	<p class="text-muted">Average Monthly Uploads</p>
-         	<div class="progress progress-striped progress-xs">
-          	<div class="progress-bar progress-bar-info progress-40">
-           		<span class="sr-only">40% Complete</span>
-          	</div>
-         	</div>
-        </div>
+      <div class="col-md-2 col-sm-3 col-xs-6 pv br">
+        <div class="h1 m0 text-bold">32°</div>
+        <div class="text-uppercase">Clear</div>
       </div>
-   	</div>
+      <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+         <div class="text-info text-sm">10 AM</div>
+         <div class="text-muted text-md">
+            <em class="wi wi-day-cloudy"></em>
+         </div>
+         <div class="text-info">
+            <em class="wi wi-sprinkles"></em>
+            <span class="text-muted">20%</span>
+         </div>
+         <div class="text-muted">27°</div>
+      </div>
+      <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+         <div class="text-info text-sm">11 AM</div>
+         <div class="text-muted text-md">
+            <em class="wi wi-day-cloudy"></em>
+         </div>
+         <div class="text-info">
+            <em class="wi wi-sprinkles"></em>
+            <span class="text-muted">30%</span>
+         </div>
+         <div class="text-muted">28°</div>
+      </div>
+      <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+         <div class="text-info text-sm">11 AM</div>
+         <div class="text-muted text-md">
+            <em class="wi wi-day-cloudy"></em>
+         </div>
+         <div class="text-info">
+            <em class="wi wi-sprinkles"></em>
+            <span class="text-muted">30%</span>
+         </div>
+         <div class="text-muted">28°</div>
+      </div>
+      <div class="col-md-2 hidden-sm hidden-xs pv text-center">
+         <div class="text-info text-sm">1 PM</div>
+         <div class="text-muted text-md">
+            <em class="wi wi-day-sunny-overcast"></em>
+         </div>
+         <div class="text-info">
+            <em class="wi wi-sprinkles"></em>
+            <span class="text-muted">0%</span>
+         </div>
+         <div class="text-muted">30°</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6">
+  <div class="panel widget">
+    <div class="row row-table">
+      <div class="col-md-2 col-sm-3 col-xs-6 text-center bg-info pv-xl">
+        <div width="80" height="80"><canvas id="clear-day" width="80" height="80"></canvas></div>
+      </div>
+      <div class="col-md-2 col-sm-3 col-xs-6 pv br">
+        <div class="h1 m0 text-bold">32°</div>
+        <div class="text-uppercase">Clear</div>
+      </div>
+      <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+         <div class="text-info text-sm">10 AM</div>
+         <div class="text-muted text-md">
+            <em class="wi wi-day-cloudy"></em>
+         </div>
+         <div class="text-info">
+            <em class="wi wi-sprinkles"></em>
+            <span class="text-muted">20%</span>
+         </div>
+         <div class="text-muted">27°</div>
+      </div>
+      <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+         <div class="text-info text-sm">11 AM</div>
+         <div class="text-muted text-md">
+            <em class="wi wi-day-cloudy"></em>
+         </div>
+         <div class="text-info">
+            <em class="wi wi-sprinkles"></em>
+            <span class="text-muted">30%</span>
+         </div>
+         <div class="text-muted">28°</div>
+      </div>
+      <div class="col-md-2 col-sm-3 hidden-xs pv text-center br">
+         <div class="text-info text-sm">11 AM</div>
+         <div class="text-muted text-md">
+            <em class="wi wi-day-cloudy"></em>
+         </div>
+         <div class="text-info">
+            <em class="wi wi-sprinkles"></em>
+            <span class="text-muted">30%</span>
+         </div>
+         <div class="text-muted">28°</div>
+      </div>
+      <div class="col-md-2 hidden-sm hidden-xs pv text-center">
+         <div class="text-info text-sm">1 PM</div>
+         <div class="text-muted text-md">
+            <em class="wi wi-day-sunny-overcast"></em>
+         </div>
+         <div class="text-info">
+            <em class="wi wi-sprinkles"></em>
+            <span class="text-muted">0%</span>
+         </div>
+         <div class="text-muted">30°</div>
+      </div>
+    </div>
+  </div>
+</div>
 	</div>
 </div>
+<script>
+  var skycons = new Skycons({"color": "white"});
+  skycons.set("clear-day", Skycons.CLEAR_DAY);
+  skycons.play();
+</script>

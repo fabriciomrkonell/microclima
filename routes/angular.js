@@ -8,7 +8,7 @@ router.get('/maps', pass.validAuthentication, function(req, res, next) {
 	res.sendfile('views/index.html');
 });
 
-router.get('/usergroup', pass.validAuthentication, function(req, res, next) {
+router.get('/group', pass.validAuthentication, function(req, res, next) {
 	res.sendfile('views/index.html');
 });
 

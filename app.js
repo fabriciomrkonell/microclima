@@ -15,7 +15,9 @@ var routes = require('./routes/index'),
     users = require('./routes/users'),
     sensors = require('./routes/sensors'),
     stationssensors = require('./routes/stationssensors'),
-    stations = require('./routes/stations');
+    stations = require('./routes/stations'),
+    groups = require('./routes/groups'),
+    sensordata = require('./routes/sensordata');
 
 var app = express();
 
@@ -41,6 +43,8 @@ app.use('/api/users', users);
 app.use('/api/sensors', sensors);
 app.use('/api/stations', stations);
 app.use('/api/stationssensors', stationssensors);
+app.use('/api/groups', groups);
+app.use('/api/sensordata', sensordata);
 
 app.use('/init-database', function(res, req, next){
   database.init(res, req, next);

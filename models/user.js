@@ -20,9 +20,15 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       validate: {
         len: {
-          args: [6, 10],
+          args: [4, 10],
           msg: "A senha deve ter entre 6 e 10 caracteres!"
         }
+      }
+    }
+  }, {
+    classMethods: {
+      associate: function(models) {
+        User.belongsTo(models.Group);
       }
     }
   });

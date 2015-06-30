@@ -7,7 +7,25 @@ var models  = require('../models'),
 
 router.get('/', function(req, res) {
   models.Station.findAll({
-    attributes: ['id', 'description', 'latitude', 'longitude']
+    attributes: ['id', 'description', 'latitude', 'longitude'],
+  }).then(function(data) {
+    res.send({ error: 0, data: data });
+  }).catch(function(err) {
+    error.sendError(res, err);
+  });
+});
+
+router.get('/sensors', function(req, res) {
+  models.Station.findAll({
+    attributes: ['id', 'description', 'latitude', 'longitude'],
+    include: {
+      model: models.StationSensor,
+      attributes: ['SensorId'],
+      include: {
+        model: models.Sensor,
+        attributes: ['description'],
+      }
+    }
   }).then(function(data) {
     res.send({ error: 0, data: data });
   }).catch(function(err) {
