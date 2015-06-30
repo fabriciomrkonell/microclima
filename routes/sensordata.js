@@ -21,7 +21,7 @@ router.post('/', function(req, res) {
   		if(req.body.data.length > 0){
 	  		var values = [];
 	  		for(var i = 0; i < req.body.data.length; i++){
-	  			values.push({ StationId: req.body.stationId, SensorId: req.body.data[i].sensorId, valueData: req.body.data[i].valueData });
+	  			values.push({ StationId: req.body.stationId, SensorId: req.body.data[i].sensorId, valueData: req.body.data[i].dataValue });
 	  		}
 	  		models.SensorData.bulkCreate(values).then(function(data) {
 		      res.send({ error: 0 });
