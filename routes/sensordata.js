@@ -6,9 +6,7 @@ var models  = require('../models'),
     router  = express.Router();
 
 router.get('/', function(req, res) {
- 	models.SensorData.findAll({
-    attributes: ['SensorId', 'StationId', 'valueData'],
-  }).then(function(data) {
+ 	models.SensorData.count().then(function(data) {
     res.send({ error: 0, data: data });
   }).catch(function(err) {
     error.sendError(res, err);
