@@ -35,7 +35,7 @@ define(['js/index', 'morris'], function (app, morris) {
     });
 
     $('#modal').on('shown.bs.modal', function (){
-      //$scope.showView($scope.type);
+      $scope.showView($scope.type);
     });
 
     $('#modal').on('hidden.bs.modal', function (){
