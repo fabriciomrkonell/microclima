@@ -36,7 +36,7 @@ define(['js/index', 'morris'], function (app, morris) {
     });
 
     $('#modal').on('shown.bs.modal', function (){
-      $scope.getSensorData($scope.configurations.SensorId, $scope.configurations.StationId);
+      $scope.getSensorData($scope.configurations.search.SensorId, $scope.configurations.search.StationId);
     });
 
     $('#modal').on('hidden.bs.modal', function (){
@@ -78,6 +78,7 @@ define(['js/index', 'morris'], function (app, morris) {
 
     $scope.getSensorData = function(sensor, station){
       $scope.configurations.active = sensor;
+
       $http.post('/api/sensordata/data', {
         data: {
           SensorId: sensor,
