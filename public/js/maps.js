@@ -23,6 +23,7 @@ define(['js/index', 'morris'], function (app, morris) {
             $scope.data = marker.station;
             if($scope.data.StationSensors.length > 0){
               $scope.configurations.active = $scope.data.StationSensors[0].SensorId;
+              $scope.configurations.search = $scope.data.StationSensors[0];
               $('#modal').modal();
             }else{
               alert('error', 'Não existe nenhum sensor nesta estação!');
@@ -35,7 +36,7 @@ define(['js/index', 'morris'], function (app, morris) {
     });
 
     $('#modal').on('shown.bs.modal', function (){
-      $scope.showView($scope.type);
+      $scope.getSensorData($scope.configurations.SensorId, $scope.configurations.StationId);
     });
 
     $('#modal').on('hidden.bs.modal', function (){
@@ -59,8 +60,12 @@ define(['js/index', 'morris'], function (app, morris) {
     var map = new google.maps.Map(document.getElementById("map"), myOptions);
 
     angular.extend($scope, {
-      data: {},
+      data: {
+        data: [],
+        dataValues: []
+      },
       configurations:{
+        search: {},
         active: 0
       },
       loader: true,
@@ -73,11 +78,20 @@ define(['js/index', 'morris'], function (app, morris) {
 
     $scope.getSensorData = function(sensor, station){
       $scope.configurations.active = sensor;
+      $http.post('/api/sensordata/data', {
+        data: {
+          SensorId: sensor,
+          StationId: station
+        }
+      }).success(function(data){
+        $scope.data.dataValues = data.data;
+        $scope.showView($scope.type, data.data);
+      });
     };
 
-    $scope.showView = function(type){
+    $scope.showView = function(type, data){
       setDiv();
-      Views.showView(type);
+      Views.showView(type, data);
       showView();
     };
 

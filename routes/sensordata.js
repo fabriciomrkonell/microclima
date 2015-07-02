@@ -37,4 +37,16 @@ router.post('/', function(req, res) {
   }
 });
 
+router.post('/data', function(req, res) {
+  models.SensorData.findAll({
+    limit: 10,
+    where: req.body.data,
+    attributes: ['valueData', ['createdAt', 'dateCreate']]
+  }).then(function(data) {
+    res.send({ error: 0, data: data });
+  }).catch(function(err) {
+    error.sendError(res, err);
+  });
+});
+
 module.exports = router;

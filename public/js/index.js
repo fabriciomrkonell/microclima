@@ -33,19 +33,13 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 	}]);
 
 	angular.module('sensul').service('Views', function(){
-  	this.showView = function(type){
+  	this.showView = function(type, data){
 
   		var configs = {
         element: 'charts',
-        data: [
-          { year: '2008', value: 20 },
-          { year: '2009', value: 10 },
-          { year: '2010', value: 5 },
-          { year: '2011', value: 5 },
-          { year: '2012', value: 20 }
-        ],
-        xkey: 'year',
-        ykeys: ['value'],
+        data: data,
+        xkey: 'dateCreate',
+        ykeys: ['valueData'],
         labels: ['Value']
   		};
 
