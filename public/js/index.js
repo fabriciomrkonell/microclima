@@ -51,6 +51,18 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
   	}
 	});
 
+	angular.module('sensul').value('Values', {
+		charts: [{
+			name: 'Linha',
+			value: 'Line'
+		}, {
+			name: 'Barra',
+			value: 'Bar'
+		}],
+		chartsDefault: 'Line',
+		flagMaps: 'img/flag.png'
+	});
+
 	angular.module('sensul').config(function ($locationProvider, $routeProvider, $httpProvider) {
 
 	 	$locationProvider.html5Mode(true);

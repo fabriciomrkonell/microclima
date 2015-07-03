@@ -16,11 +16,11 @@
     <div class="modal-content">
       <div class="modal-header" style="border-bottom: 0px">
         <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
-        <h4 class="modal-title">{{data.description}}</h4>
+        <h4 class="modal-title">{{data.station.description}}</h4>
       </div>
       <div class="modal-body" style="padding: 0px">
         <ul class="nav nav-tabs">
-          <li ng-class="{ active: configurations.active == sensors.SensorId }" ng-repeat="sensors in data.StationSensors" ng-click="getSensorData(sensors.SensorId, data.id)">
+          <li ng-class="{ active: configurations.active == sensors.SensorId }" ng-repeat="sensors in data.station.StationSensors" ng-click="getSensorData(sensors.SensorId, data.station.id)">
             <a href="#">{{sensors.Sensor.description}}
             </a>
           </li>
@@ -36,7 +36,7 @@
               <div class="col-sm-4 col-md-offset-4">
                 <div class="form-group text-center">
                   <label>Tipo de visualização</label>
-                  <select class="form-control text-center" ng-model="type" ng-change="showView(type, data.dataValues)">
+                  <select class="form-control text-center" ng-model="typeDefault" ng-change="showView(typeDefault, configurations.search.sensorData)">
                     <option value="{{typeValue.value}}" ng-repeat="typeValue in types">{{typeValue.name}}</option>
                   </select>
                 </div>
