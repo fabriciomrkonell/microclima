@@ -37,7 +37,7 @@ router.post('/', function(req, res) {
   }
 });
 
-router.post('/data', function(req, res) {
+router.posts('/data', function(req, res) {
   models.SensorData.findAll({
     limit: 10,
     where: req.body.data,
