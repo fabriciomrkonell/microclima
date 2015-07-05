@@ -1,14 +1,19 @@
-[
-  {
-    "name": "root",
-    "url": "/",
-    "parent": "",
-    "abstract": true,
-    "views": [
-      {
-        "name": "header",
-        "templateUrl": "tpl/home.html"
-      }
+{
+  "1": {
+    "pages": [
+      "/",
+      "/users",
+      "/profile"
+    ],
+    "api": [
+    ]
+  },
+  "2": {
+    "pages": [
+      "/",
+      "/profile"
+    ],
+    "api": [
     ]
   }
-]
+}
