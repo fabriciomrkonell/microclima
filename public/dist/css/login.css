@@ -1,5 +1,3 @@
-/*** uncss> filename: public/app/css/bootstrap.css ***/
-
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -532,8 +530,8 @@ html {
 
 .panel-dark>.panel-heading {
   color: #fff;
-  background-color: #3a3f51;
-  border-color: #3a3f51;
+  background-color: #23b7e5;
+  border-color: #23b7e5;
 }
 
 x:-o-prefocus {
