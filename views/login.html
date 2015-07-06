@@ -18,7 +18,7 @@
               <input type="email" placeholder="E-mail" ng-model="account.username" class="form-control">
             </div>
             <div class="form-group">
-              <input type="password" placeholder="Senha" ng-model="account.password" class="form-control">
+              <input type="password" placeholder="Senha" ng-model="account.password" class="form-control" ng-keypress="login(account, remember, $event)">
             </div>
             <div class="clearfix">
               <div class="checkbox c-checkbox pull-left mt0">
@@ -31,11 +31,10 @@
                 <a class="text-muted" href="#">Esqueceu sua senha?</a>
               </div>
             </div>
-            <button type="button" class="btn btn-block btn-primary mt-lg" ng-click="login(account, remember)">Entrar</button>
-            <p class="pt-lg text-center">
-              <span class="text-danger ng-hide" ng-show="error">E-mail ou senha inválidos!</span>
+            <button type="button" class="btn btn-block btn-primary mt-lg" ng-click="login(account, remember, $event)">Entrar</button>
+            <p class="pt-lg text-center ng-hide" ng-show="error">
+              <span class="text-danger">E-mail ou senha inválidos!</span>
             </p>
-            <a class="btn btn-block btn-default" href="#">Registrar</a>
           </div>
         </div>
         <div class="p-lg text-center">
