@@ -37,10 +37,10 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 
   		var configs = {
         element: 'charts',
-        data: data,
+        data: data.reverse(),
         xkey: 'dateCreate',
         ykeys: ['valueData'],
-        labels: ['Value']
+        labels: ['Valor']
   		};
 
     	if(type == 'Line'){

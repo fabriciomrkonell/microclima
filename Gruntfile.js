@@ -13,24 +13,24 @@ module.exports = function(grunt) {
           'public/dist/css/login.css': ['views/login.html']
         }
       }
-    },
+    },*/
     cssmin: {
       target: {
         files: {
-          'public/dist/css/login.min.css': ['public/dist/css/login.css']
+          'css/style.min.css': ['css/theme-a.css', 'css/bootstrap.css', 'css/app.css']
         }
       }
-    },*/
-    uglify: {
+    },
+    /*uglify: {
       my_target: {
         files: {
           'public/dist/js/login.min.js': ['public/vendor/angular/angular.js',
           'public/vendor/angularstorage/ngStorage.min.js', 'public/js/login.js']
         }
       }
-    }
+    }*/
   });
 
-  grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['cssmin']);
 
 };
