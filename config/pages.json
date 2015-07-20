@@ -33,7 +33,8 @@
       "/menu",
       "/api/users/profile",
       "/api/users/password",
-      "/api/sensordata/data"
+      "/api/sensordata/data",
+      "/api/stations/sensors"
     ]
   }
 }
