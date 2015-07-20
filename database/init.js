@@ -7,15 +7,18 @@ var models  = require('../models'),
 
 exports.init = function(req, res, next) {
 
-	if(req.param('init') == 'microclima'){
+	if(req.param('token') == 'microclima'){
 		models.User.findAll().then(function(data){
 			if(data.length > 0){
 				res.send({ error: 1, message: 'Já existe um usuário cadastrado!'});
 			}else{
-				models.Group.create({ description: 'Normal' }).then(function(entity){
-					models.User.create({ fullname: 'Fabrício', email: 'fabricioronchii@gmail.com', password: 'admin1234', GroupId: entity.id });
-					res.send({ error: 0, message: 'Inicialização completa!'});
+				models.User.create({
+					fullname: 'Sensul',
+					email: 'sensul@sensul.com',
+					password: 'sensul',
+					group: 1
 				});
+				res.send({ error: 0, message: 'Inicialização completa!'});
 			}
 		});
 	}else{

@@ -2,25 +2,75 @@
 
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
-    models = require('../models');
+    models = require('../models'),
+    config = require('../config/pages.json'),
+    passwordHash = require('password-hash');
 
 function security() { };
 
-function validAuthentication(req, res, next){
-  if(req.user){
-    next();
+function getUrl(param, flag){
+  var lenghtParam = param.length;
+  if(parseInt(param[lenghtParam - 1])){
+    param = param.substr(lenghtParam * -1, lenghtParam - 1);
+    return getUrl(param, true);
   }else{
-    res.redirect('/');
+    if(flag){
+      return param = param.substr(lenghtParam * -1, lenghtParam - 1);
+    }else{
+      return param;
+    }
+  }
+}
+
+function validAuthenticationPage(req, res, next){
+  if(req.user){
+    if(config[req.user.group].page.indexOf(getUrl(req._parsedOriginalUrl.path)) != '-1'){
+      next();
+    }else{
+      res.redirect('/logout');
+    }
+  }else{
+    res.redirect('/logout');
   }
 };
 
-security.prototype.validAuthentication = function(req, res, next) {
-  validAuthentication(req, res, next);
+function validAuthenticationJSON(req, res, next){
+  if(req.user){
+    if(config[req.user.group].api.indexOf(getUrl(req._parsedOriginalUrl.path)) != '-1'){
+      next();
+    }else{
+      console.log("----------------------------");
+      console.log(getUrl(req._parsedOriginalUrl.path));
+      console.log("----------------------------");
+      res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
+    }
+  }else{
+    res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
+  }
+};
+
+security.prototype.validAuthenticationPage = function(req, res, next) {
+  validAuthenticationPage(req, res, next);
+};
+
+security.prototype.validAuthenticationJSON = function(req, res, next) {
+  validAuthenticationJSON(req, res, next);
 };
 
 security.prototype.findUser = function(username, password, done) {
-  models.User.find({ where: { email: username, password: password } }).then(function(entity) {
-    done(null, entity);
+  models.User.find({
+    where: { email: username },
+    attributes: ['id', 'fullname', 'email', 'password', 'group']
+  }).then(function(entity) {
+    if(entity){
+      if(passwordHash.verify(password, entity.password)){
+        done(null, entity);
+      }else{
+        done(null, null);
+      }
+    }else{
+      done(null, null);
+    }
   });
 };
 

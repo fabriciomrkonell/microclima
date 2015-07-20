@@ -1,0 +1,49 @@
+<div class="content-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">Perfil de usuário</div>
+          <div class="panel-body">
+            <form role="form">
+              <div class="form-group">
+                <label>Nome</label>
+                <input type="text" placeholder="Nome" class="form-control" ng-model="dataUser.fullname">
+              </div>
+              <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" placeholder="E-mail" class="form-control" ng-model="dataUser.email">
+              </div>
+              <div class="form-group">
+                <label>Grupo</label>
+                <select class="form-control" ng-model="dataUser.group">
+                  <option value="{{group.id}}" ng-repeat="group in groups">{{group.name}}</option>
+                </select>
+              </div>
+              <button type="button" ng-click="save(dataUser)" class="btn btn-sm btn-default">Salvar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="panel panel-default">
+          <div class="panel-heading">Configuração de senha</div>
+          <div class="panel-body">
+            <form role="form">
+              <div class="form-group">
+                <label>Senha atual</label>
+                <input type="password" placeholder="Senha atual" class="form-control" ng-model="dataPassword.lastPassword">
+              </div>
+              <div class="form-group">
+                <label>Nova senha</label>
+                <input type="password" placeholder="Nova senha" class="form-control" ng-model="dataPassword.newPassword">
+              </div>
+              <button type="button" ng-click="savePassword(dataPassword)" class="btn btn-sm btn-default">Salvar</button>
+              <button type="button" ng-click="clearPassword()" class="btn btn-sm btn-default">Limpar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

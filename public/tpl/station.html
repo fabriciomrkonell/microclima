@@ -33,20 +33,16 @@
                 <tr>
                   <th class="text-center" style="width: 100px">Código</th>
                   <th>Descrição</th>
-                  <th class="text-center" style="width: 100px">Ações</th>
+                  <th class="text-center" style="width: 150px">Ações</th>
                 </tr>
               </thead>
               <tbody>
                 <tr ng-repeat="station in stations">
                   <td class="text-center" style="width: 100px">{{station.id}}</td>
                   <td>{{station.description}}</td>
-                  <td class="text-center" style="width: 100px">
-                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(station)">
-                      <i class="icon-pencil"></i>
-                    </button>
-                    <button type="button" class="btn btn-danger btn-xs" ng-click="delete(station.id)">
-                      <i class="icon-trash"></i>
-                    </button>
+                  <td class="text-center" style="width: 150px">
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="edit(station)">Editar</button>
+                    <button type="button" class="btn btn-primary btn-xs" ng-click="getSensors(station.id)">Sensores</button>
                   </td>
                 </tr>
               </tbody>
@@ -56,4 +52,34 @@
       </div>
    	</div>
 	</div>
+</div>
+<div class="modal fade" id="modalSensors">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="table-responsive table-bordered">
+              <table class="table" style="margin-bottom: 0px">
+                <thead>
+                  <tr>
+                    <th>Sensor</th>
+                    <th class="text-center" style="width: 200px">Relacionamento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="sensor in sensors">
+                    <td>{{sensor.description}}</td>
+                    <td class="text-center" style="width: 200px">
+                      <input type="checkbox" ng-checked="isCheck(sensor.id)" ng-click="saveStationSensor(stationActive, sensor.id)">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

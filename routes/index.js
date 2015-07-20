@@ -12,12 +12,6 @@ router.get('/', function(req, res, next) {
   }
 });
 
-router.get('/register', function(req, res) {
-});
-
-router.post('/register', function(req, res) {
-});
-
 router.get('/recover-password', function(req, res) {
 });
 

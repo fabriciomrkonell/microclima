@@ -1,27 +1,28 @@
 'use strict';
 
 define(['js/index'], function (app) {
-	app.controller('sensor', ['$scope', '$http', function($scope, $http){
+	app.controller('sensor', ['$scope', '$http', 'Values', function($scope, $http, Values){
 
 		angular.extend($scope, {
 			data: {
 				id: null,
 				description: ''
 			},
-			sensors: []
+			sensors: Values.sensors
 		});
 
 		function getAll(){
 			$http.get('/api/sensors').success(function(data){
 				$scope.sensors = data.data;
+				angular.extend(Values, {
+      		sensors: data.data
+      	});
 			});
 			angular.extend($scope.data, {
 				id: null,
 				description: ''
 			});
 		};
-
-		getAll();
 
 		$scope.getAll = function(){
 			getAll();
@@ -37,11 +38,9 @@ define(['js/index'], function (app) {
 			$scope.data = sensor;
 		};
 
-		$scope.delete = function(sensor){
-			$http.delete('/api/sensors/' + sensor).success(function(){
-				getAll();
-			});
-		};
+		if($scope.sensors.length == 0){
+			getAll();
+		}
 
 	}]);
 });

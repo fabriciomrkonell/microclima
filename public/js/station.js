@@ -1,7 +1,7 @@
 'use strict';
 
 define(['js/index'], function (app) {
-	app.controller('station', ['$scope', '$http', function($scope, $http){
+	app.controller('station', ['$scope', '$http', 'Values', '$timeout', function($scope, $http, Values, $timeout){
 
 		angular.extend($scope, {
 			data: {
@@ -10,7 +10,10 @@ define(['js/index'], function (app) {
 				latitude: 0,
 				longitude: 0
 			},
-			stations: []
+			stationssensors: [],
+			stations: Values.stations,
+			sensors: Values.sensors,
+			stationActive: null
 		});
 
 		function getAll(){
@@ -24,8 +27,6 @@ define(['js/index'], function (app) {
 				longitude: 0
 			});
 		};
-
-		getAll();
 
 		$scope.getAll = function(){
 			getAll();
@@ -41,11 +42,43 @@ define(['js/index'], function (app) {
 			$scope.data = station;
 		};
 
-		$scope.delete = function(station){
-			$http.delete('/api/stations/' + station).success(function(){
-				getAll();
-			});
+		$scope.getSensors = function(idSensor){
+			$scope.stationActive = idSensor;
+			$scope.stationssensors = [];
+      $http.get('/api/stationssensors/' + idSensor).success(function(data){
+        $scope.stationssensors = data.data;
+        $timeout(function(){
+          $("#modalSensors").modal();
+        });
+      });
 		};
+
+		$scope.saveStationSensor = function(station, sensor){
+      $http.post('/api/stationssensors', { StationId: station, SensorId: sensor });
+    };
+
+    $scope.isCheck = function(sensor){
+      for(var i = 0; i < $scope.stationssensors.length; i++){
+        if($scope.stationssensors[i].SensorId == sensor){
+          i = $scope.stationssensors.length;
+          return true;
+        }
+      }
+      return false;
+    };
+
+		if($scope.stations.length == 0){
+			getAll();
+		}
+
+		if($scope.sensors.length == 0){
+			$http.get('/api/sensors').success(function(data){
+				$scope.sensors = data.data;
+				angular.extend(Values, {
+					sensors: data.data
+				});
+			});
+		}
 
 	}]);
 });

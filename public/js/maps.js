@@ -25,7 +25,7 @@ define(['js/index', 'morris'], function (app, morris) {
               $scope.configurations.search = marker.station.StationSensors[0];
               $('#modal').modal();
             }else{
-              alert('error', 'Não existe nenhum sensor nesta estação!');
+              alert('Não existe nenhum sensor nesta estação!');
             }
             $rootScope.$digest();
           }

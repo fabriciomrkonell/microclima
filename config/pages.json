@@ -1,0 +1,39 @@
+{
+  "1": {
+    "description": "Administrador",
+    "page": [
+      "/",
+      "/profile",
+      "/users",
+      "/sensor",
+      "/station",
+      "/history"
+    ],
+    "api": [
+      "/menu",
+      "/api/users",
+      "/api/users/profile",
+      "/api/users/password",
+      "/api/sensordata/data",
+      "/api/sensors",
+      "/api/stations/sensors",
+      "/api/stationssensors",
+      "/api/stations"
+    ]
+  },
+  "2": {
+    "description": "Cliente",
+    "page": [
+      "/",
+      "/profile",
+      "/realtime",
+      "/history"
+    ],
+    "api": [
+      "/menu",
+      "/api/users/profile",
+      "/api/users/password",
+      "/api/sensordata/data"
+    ]
+  }
+}

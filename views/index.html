@@ -4,13 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Microclima - Sensul</title>
-    <link rel="stylesheet" href="app/css/bootstrap.css">
-    <link rel="stylesheet" href="app/css/theme-a.css">
-    <link rel="stylesheet" href="app/css/app.css">
-    <link rel="stylesheet" href="vendor/loader/css/loaders.css">
-    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
-    <link rel="stylesheet" href="vendor/weather-icons/css/weather-icons.min.css">
-    <link rel="stylesheet" href="vendor/morris/css/morris.css">
+    <link rel="stylesheet" href="/css/style.min.css">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
   </head>
   <body class="aside-collapsed">
@@ -26,58 +20,37 @@
             </button>
             <a href="/" class="navbar-brand">
               <div class="brand-logo">
-                <img src="img/logo/white_p.png" class="img-responsive" style="width: 125px">
+                <img src="/img/logo/white_p.png" class="img-responsive" style="width: 125px">
               </div>
-              <div class="brand-logo-collapsed" style="width: 140px; margin-left: -65px; margin-top: 5px">
-                <img src="img/logo/white_p.png" class="img-responsive">
+              <div class="brand-logo-collapsed" style="width: 140px; margin-left: -50px; margin-top: 5px">
+                <img src="/img/logo/white_p.png" class="img-responsive">
               </div>
             </a>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a ng-href="/maps">Mapa</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Relação&nbsp;&nbsp;<span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a ng-href="/stationsensor">Estação / Sensores</a></li>
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Cadastro&nbsp;&nbsp;<span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a ng-href="/sensor">Sensores</a></li>
-                  <li><a ng-href="/station">Estações</a></li>
-                </ul>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  Configurações&nbsp;&nbsp;<span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a ng-href="/group">Grupos de usuários</a></li>
-                  <li><a ng-href="/user">Usuários</a></li>
-                  <li><a ng-href="/page">Páginas</a></li>
-                  <li><a href="#" ng-click="logout()">Sair</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+          <script type="text/javascript" src="/menu"></script>
         </div>
       </nav>
-      <div class="uk-notify uk-notify-bottom-center ng-hide ng-cloak" style="display: block;" ng-show="notity.error == true" ng-click="hideError('error')">
-        <div class="uk-notify-message alert-dismissable alert alert-danger" style="opacity: 1; margin-top: 0px; margin-bottom: 10px;">
-          <a class="close">×</a>
-          <div>{{notity.message}}</div>
-        </div>
-      </div>
       <section style="margin-bottom: 0px !important" ng-view></section>
+      <div class="text-center" style="margin-top: 50px">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="50" height="50" fill="#23b7e5" ng-show="loader">
+          <path transform="translate(2)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline"  />
+          </path>
+          <path transform="translate(8)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0.2" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline"  />
+          </path>
+          <path transform="translate(14)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0.4" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline" />
+          </path>
+          <path transform="translate(20)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0.6" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline" />
+          </path>
+          <path transform="translate(26)" d="M0 12 V20 H4 V12z">
+            <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0.8" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline" />
+          </path>
+        </svg>
+      </div>
     </div>
-    <script data-main="js/main" src="vendor/require/require.js"></script>
+    <script data-main="/js/main" src="/vendor/require/require.js"></script>
   </body>
 </html>

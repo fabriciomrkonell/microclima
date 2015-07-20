@@ -58,21 +58,4 @@ router.post('/', function(req, res) {
   }
 });
 
-router.delete('/:id', function(req, res) {
-  models.Station.find({
-    attributes: ['id'],
-    where: {
-      id: req.param('id')
-    }
-  }).then(function(entity) {
-    entity.destroy().then(function(data) {
-      res.send({ error: 0, data: data });
-    }).catch(function(err) {
-      error.sendError(res, err);
-    });
-  }).catch(function(err) {
-    error.sendError(res, err);
-  });
-});
-
 module.exports = router;

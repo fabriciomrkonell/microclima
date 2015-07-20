@@ -17,19 +17,6 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 			window.location = '/logout';
 		};
 
-		$rootScope.hideError = function(type){
-			$rootScope.notity[type] = false;
-		};
-
-	}]);
-
-	angular.module('sensul').run(['$rootScope', function($rootScope){
-
-		window.alert = function(type, message){
-			$rootScope.notity[type] = true;
-			$rootScope.notity.message = message;
-		}
-
 	}]);
 
 	angular.module('sensul').service('Views', function(){
@@ -59,13 +46,25 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 			name: 'Barra',
 			value: 'Bar'
 		}],
+		groups: [{
+			id: 1,
+			name: 'Administrador',
+		}, {
+			id: 2,
+			name: 'Cliente'
+		}],
+		sensors: [],
+		stations: [],
 		chartsDefault: 'Line',
 		flagMaps: 'img/flag.png'
 	});
 
 	angular.module('sensul').config(function ($locationProvider, $routeProvider, $httpProvider) {
 
-	 	$locationProvider.html5Mode(true);
+	 	$locationProvider.html5Mode({
+  		enabled: true,
+  		requireBase: false
+		});
 
 	  $routeProvider.when("/",
 	  	angularAMD.route({
@@ -77,11 +76,11 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 	     	controller: 'maps',
 	      controllerUrl: 'js/maps'
 	    })
-		).when("/user",
+		).when("/users",
 	    angularAMD.route({
-	    	templateUrl: 'tpl/user.html',
-	     	controller: 'user',
-	      controllerUrl: 'js/user'
+	    	templateUrl: 'tpl/users.html',
+	     	controller: 'users',
+	      controllerUrl: 'js/users'
 	    })
 		).when("/group",
 	    angularAMD.route({
@@ -101,6 +100,12 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 	     	controller: 'station',
 	      controllerUrl: 'js/station'
 	    })
+		).when("/profile",
+	    angularAMD.route({
+	    	templateUrl: '/tpl/profile.html',
+	     	controller: 'profile',
+	      controllerUrl: 'js/profile'
+	    })
 		).when("/page",
 	    angularAMD.route({
 	    	templateUrl: 'tpl/page.html',
@@ -113,14 +118,21 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 	     	controller: 'stationsensor',
 	      controllerUrl: 'js/stationsensor'
 	    })
-		);
+		).otherwise({
+			redirectTo: '/'
+		});
+
 
 		$httpProvider.interceptors.push(function($q) {
   		return {
     		'response': function(response) {
     			if(response.data){
 	      		if(response.data.error == 1){
-	      			alert('error', response.data.message);
+	      			alert(response.data.message);
+	        		return $q.reject(response);
+	        	}
+	        	if(response.data.error == 2){
+	      			window.location = '/logout';
 	        		return $q.reject(response);
 	        	}
 	      	}
@@ -128,6 +140,7 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
     		}
   		};
 		});
+
 
 	});
 

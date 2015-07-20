@@ -14,9 +14,8 @@ var routes = require('./routes/index'),
     angular = require('./routes/angular'),
     users = require('./routes/users'),
     sensors = require('./routes/sensors'),
-    stationssensors = require('./routes/stationssensors'),
     stations = require('./routes/stations'),
-    groups = require('./routes/groups'),
+    stationssensors = require('./routes/stationssensors'),
     sensordata = require('./routes/sensordata');
 
 var app = express();
@@ -27,7 +26,6 @@ var session = require('express-session')({
   saveUninitialized: false
 });
 
-//app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -42,8 +40,8 @@ app.use('/', angular);
 app.use('/api/users', users);
 app.use('/api/sensors', sensors);
 app.use('/api/stations', stations);
+app.use('/api/sensordata', sensordata);
 app.use('/api/stationssensors', stationssensors);
-app.use('/api/groups', groups);
 app.use('/api/sensordata', sensordata);
 
 app.use('/init-database', function(res, req, next){

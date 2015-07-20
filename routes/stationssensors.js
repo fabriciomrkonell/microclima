@@ -5,31 +5,14 @@ var models  = require('../models'),
     error = require('../error/error'),
     router  = express.Router();
 
-router.get('/', function(req, res) {
-  var send = {
-    stations: [],
-    sensors: [],
-    stationssensors: []
-  };
-  models.Station.findAll({
-    attributes: ['id', 'description']
-  }).then(function(data_stations) {
-    send.stations = data_stations;
-    models.Sensor.findAll({
-      attributes: ['id', 'description'],
-    }).then(function(data_sensors) {
-      send.sensors = data_sensors;
-      models.StationSensor.findAll({
-        attributes: ['StationId', 'SensorId']
-      }).then(function(data_stationssensors) {
-        send.stationssensors = data_stationssensors;
-        res.send({ error: 0, data: send });
-      }).catch(function(err) {
-        error.sendError(res, err);
-      });
-    }).catch(function(err) {
-      error.sendError(res, err);
-    });
+router.get('/:id', function(req, res) {
+  models.StationSensor.findAll({
+    where: {
+      StationId: req.param('id')
+    },
+    attributes: ['SensorId']
+  }).then(function(entities) {
+    res.send({ error: 0, data: entities });
   }).catch(function(err) {
     error.sendError(res, err);
   });
