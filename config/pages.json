@@ -5,6 +5,7 @@
       "/",
       "/profile",
       "/users",
+      "/maps",
       "/sensor",
       "/station",
       "/history"
@@ -26,8 +27,7 @@
     "page": [
       "/",
       "/profile",
-      "/realtime",
-      "/history"
+      "/maps"
     ],
     "api": [
       "/menu",
