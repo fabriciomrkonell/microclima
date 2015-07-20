@@ -44,7 +44,7 @@ router.post('/data', function(req, res) {
     attributes: ['valueData', [models.sequelize.fn('date_format', models.sequelize.col('createdAt'), '%H:%i'), 'dateCreate']],
     order: 'createdAt DESC'
   }).then(function(data) {
-    res.send({ error: 0, data: data });
+    res.send({ error: 0, data: data.reverse() });
   }).catch(function(err) {
     error.sendError(res, err);
   });

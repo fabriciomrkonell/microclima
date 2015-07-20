@@ -24,7 +24,7 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 
   		var configs = {
         element: 'charts',
-        data: data.reverse(),
+        data: data,
         xkey: 'dateCreate',
         ykeys: ['valueData'],
         labels: ['Valor']
