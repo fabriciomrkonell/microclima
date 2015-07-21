@@ -88,7 +88,7 @@ define(['js/index', 'morris'], function (app, morris) {
 
     $scope.showView = function(typeDefault, data){
       setDiv();
-      Chart.showChart(typeDefault, data, $scope.data.station.description);
+      Chart.showChart(typeDefault, data, $scope.configurations.search.Sensor.description);
       showView();
     };
 
