@@ -19,15 +19,20 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 
 	}]);
 
-	angular.module('sensul').service('Views', function(){
-  	this.showView = function(type, data){
+	angular.module('sensul').service('Chart', function(){
+
+  	this.showChart = function(type, data){
 
   		var configs = {
         element: 'charts',
         data: data,
         xkey: 'dateCreate',
         ykeys: ['valueData'],
-        labels: ['Valor']
+        labels: ['Valor'],
+        dateFormat: function(date) {
+         	d = new Date();
+         	return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+        }
   		};
 
     	if(type == 'Line'){

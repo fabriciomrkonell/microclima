@@ -1,7 +1,7 @@
 'use strict';
 
 define(['js/index', 'morris'], function (app, morris) {
-	app.controller('maps', ['$scope', '$http', '$rootScope', 'Views', 'Values', function($scope, $http, $rootScope, Views, Values){
+	app.controller('maps', ['$scope', '$http', '$rootScope', 'Chart', 'Values', function($scope, $http, $rootScope, Chart, Values){
 
 		var defaultHeight = 129;
 
@@ -88,7 +88,7 @@ define(['js/index', 'morris'], function (app, morris) {
 
     $scope.showView = function(typeDefault, data){
       setDiv();
-      Views.showView(typeDefault, data);
+      Chart.showChart(typeDefault, data);
       showView();
     };
 
