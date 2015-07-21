@@ -23,16 +23,21 @@ router.post('/', function(req, res) {
 	  		}
 	  		models.SensorData.bulkCreate(values).then(function(data) {
 		      res.send({ error: 0 });
+          console.log('Salvo com sucesso!');
 		    }).catch(function(err) {
+          console.log('Os valores estão inválidos!');
 		      res.send({ error: 1, message: 'Os valores estão inválidos!' });
 		    });
 	  	}else{
+        console.log('Estação sem valores!');
 	  		res.send({ error: 1, message: 'Estação sem valores!' });
 	  	}
   	}else{
+      console.log('Valores não encontrados!');
   		res.send({ error: 1, message: 'Valores não encontrados!' });
   	}
   }else{
+    console.log('Estação não encontrada!');
   	res.send({ error: 1, message: 'Estação não encontrada!' });
   }
 });
