@@ -21,21 +21,21 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 
 	angular.module('sensul').service('Chart', function(){
 
-  	this.showChart = function(type, data){
+  	this.showChart = function(type, data, label){
 
   		var configs = {
         element: 'charts',
         data: data,
         xkey: 'dateCreate',
         ykeys: ['valueData'],
-        labels: ['Valor'],
+        labels: [label || 'Valor'],
        	xLabelFormat: function(date) {
         	var d = new Date(date.label || date);
          	return (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
         },
         dateFormat: function(date) {
           var d = new Date(date);
-         	return d.getDate()+'/'+(d.getMonth()+1)+'/';
+         	return (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
         },
   		};
 
