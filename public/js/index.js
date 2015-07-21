@@ -34,7 +34,7 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
          	return (d.getMonth()+1) + '/' + d.getFullYear();
         },
         dateFormat: function(date) {
-          var d = new Date(date);
+          d = new Date(date);
          	return d.getDate()+'/'+(d.getMonth()+1)+'/';
         },
   		};
