@@ -30,11 +30,15 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
         ykeys: ['valueData'],
         labels: ['Valor'],
        	xLabelFormat: function(date) {
+       		console.log("1-");
+        	console.log(date);
         	var d = new Date(date);
          	return (d.getMonth()+1) + '/' + d.getFullYear();
         },
         dateFormat: function(date) {
-          d = new Date(date);
+        	console.log("2-");
+        	console.log(date);
+          var d = new Date(date);
          	return d.getDate()+'/'+(d.getMonth()+1)+'/';
         },
   		};
