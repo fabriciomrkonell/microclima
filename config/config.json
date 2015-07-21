@@ -3,12 +3,18 @@
     "username": "root",
     "password": "root",
     "database": "microclima",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "options": {
+      "timezone": "-3:00"
+    }
   },
   "production": {
     "username": "root",
     "password": "32BEJddBYd",
     "database": "microclima",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "options": {
+      "timezone": "-3:00"
+    }
   }
 }

@@ -5,7 +5,7 @@ var fs = require("fs"),
 		Sequelize = require("sequelize"),
 		env = process.env.NODE_ENV || "development",
 		config = require(__dirname + '/../config/config.json')[env],
-		sequelize = new Sequelize(config.database, config.username, config.password, config),
+		sequelize = new Sequelize(config.database, config.username, config.password, config.options),
 		db = {};
 
 fs.readdirSync(__dirname).filter(function(file) {
