@@ -24,11 +24,16 @@ router.post('/', function(req, res) {
         id: req.body.id
       }
     }).then(function(entity) {
-      entity.updateAttributes(req.body).then(function(data) {
-        res.send({ error: 0, message: 'Usuário atualizado com sucesso!' });
-      }).catch(function(err) {
-        error.sendError(res, err);
-      });
+      if(entity){
+        delete req.body.group;
+        entity.updateAttributes(req.body).then(function(data) {
+          res.send({ error: 0, message: 'Usuário atualizado com sucesso!' });
+        }).catch(function(err) {
+          error.sendError(res, err);
+        });
+      }else{
+        error.sendError(res, null, 'Usuário não encontrado!');
+      }
     }).catch(function(err) {
       error.sendError(res, err);
     });
