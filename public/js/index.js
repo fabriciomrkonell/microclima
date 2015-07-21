@@ -32,13 +32,17 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
        	xLabelFormat: function(date) {
         	var d = new Date(date);
          	return (d.getMonth()+1) + '/' + d.getFullYear();
-        }
+        },
+        dateFormat: function(date) {
+          var d = new Date(date);
+         	return d.getDate()+'/'+(d.getMonth()+1)+'/';
+        },
   		};
 
     	if(type == 'Line'){
-    		new Morris.Line(configs);
+    		return new Morris.Line(configs);
     	}else{
-    		new Morris.Bar(configs);
+    		return new Morris.Bar(configs);
     	}
   	}
 	});
