@@ -46,7 +46,7 @@ router.post('/data', function(req, res) {
   models.SensorData.findAll({
     limit: 10,
     where: req.body.data,
-    attributes: ['valueData', [models.sequelize.fn('date_format', models.sequelize.col('createdAt'), '%H:%i'), 'dateCreate']],
+    attributes: ['valueData', [models.sequelize.fn('date_format', models.sequelize.col('createdAt'), '%Y-%m-%d %H:%i'), 'dateCreate']],
     order: 'createdAt DESC'
   }).then(function(data) {
     res.send({ error: 0, data: data.reverse() });
