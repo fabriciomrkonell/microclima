@@ -28,7 +28,7 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
         data: data,
         xkey: 'dateCreate',
         ykeys: ['valueData'],
-        labels: [label || 'Valor'],
+        labels: [label],
        	xLabelFormat: function(date) {
         	var d = new Date(date.label || date);
          	return (d.getHours() < 10 ? '0' : '') + d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();

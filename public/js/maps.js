@@ -88,8 +88,17 @@ define(['js/index', 'morris'], function (app, morris) {
 
     $scope.showView = function(typeDefault, data){
       setDiv();
-      Chart.showChart(typeDefault, data, $scope.configurations.search.Sensor.description);
+      Chart.showChart(typeDefault, data, $scope.getNameSensor());
       showView();
+    };
+
+    $scope.getNameSensor = function(){
+      for(var i = 0; i <= $scope.data.station.StationSensors.length; i++){
+        if($scope.data.station.StationSensors[i].SensorId == $scope.configurations.active){
+          return $scope.data.station.StationSensors[i].Sensor.description;
+        }
+      }
+      return "Valor";
     };
 
     function showView(){
