@@ -49,12 +49,32 @@ function validAuthenticationJSON(req, res, next){
   }
 };
 
+function validAuthenticationPostJSON(req, res, next){
+  if(req.user){
+    if(config[req.user.group].api.indexOf(getUrl(req._parsedOriginalUrl.path)) != '-1'){
+      next();
+    }else{
+      if(getUrl(req._parsedOriginalUrl.path) == '/api/sensordata/data'){
+        next();
+      }else{
+        res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
+      }
+    }
+  }else{
+    res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
+  }
+};
+
 security.prototype.validAuthenticationPage = function(req, res, next) {
   validAuthenticationPage(req, res, next);
 };
 
 security.prototype.validAuthenticationJSON = function(req, res, next) {
   validAuthenticationJSON(req, res, next);
+};
+
+security.prototype.validAuthenticationPostJSON = function(req, res, next) {
+  validAuthenticationPostJSON(req, res, next);
 };
 
 security.prototype.findUser = function(username, password, done) {

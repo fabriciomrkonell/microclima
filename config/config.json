@@ -4,17 +4,13 @@
     "password": "root",
     "database": "microclima",
     "dialect": "mysql",
-    "options": {
-      "timezone": "-3:00"
-    }
+    "timezone": "+5:00"
   },
   "production": {
     "username": "root",
     "password": "32BEJddBYd",
     "database": "microclima",
     "dialect": "mysql",
-    "options": {
-      "timezone": "-3:00"
-    }
+    "timezone": "+3:00"
   }
 }
