@@ -29,9 +29,9 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
         xkey: 'dateCreate',
         ykeys: ['valueData'],
         labels: ['Valor'],
-        dateFormat: function(date) {
-         	var d = new Date();
-         	return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
+       	xLabelFormat: function(date) {
+        	var d = new Date(date);
+         	return (d.getMonth()+1) + '/' + d.getFullYear();
         }
   		};
 
