@@ -8,7 +8,7 @@ router.get('/api*', pass.validAuthenticationJSON, function(req, res, next) {
 	next();
 });
 
-router.post('/api*', pass.validAuthenticationJSON, function(req, res, next) {
+router.post('/api*', function(req, res, next) {
 	next();
 });
 
