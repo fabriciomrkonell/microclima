@@ -19,7 +19,8 @@
       "/api/sensors",
       "/api/stations/sensors",
       "/api/stationssensors",
-      "/api/stations"
+      "/api/stations",
+      "/api/sensordata"
     ]
   },
   "2": {
