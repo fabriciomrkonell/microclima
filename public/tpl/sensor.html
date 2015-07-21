@@ -23,12 +23,14 @@
             <table class="table">
               <thead>
                 <tr>
+                  <th class="text-center" style="width: 100px">Código</th>
                   <th>Descrição</th>
                   <th class="text-center" style="width: 100px">Ações</th>
                 </tr>
               </thead>
               <tbody>
                 <tr ng-repeat="sensor in sensors">
+                  <td class="text-center" style="width: 100px">{{sensor.id}}</td>
                   <td>{{sensor.description}}</td>
                   <td class="text-center" style="width: 100px">
                     <button type="button" class="btn btn-primary btn-xs" ng-click="edit(sensor)">Editar</button>
