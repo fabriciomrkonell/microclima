@@ -30,7 +30,7 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
         ykeys: ['valueData'],
         labels: ['Valor'],
         dateFormat: function(date) {
-         	d = new Date();
+         	var d = new Date();
          	return d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear();
         }
   		};
