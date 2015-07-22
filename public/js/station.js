@@ -19,6 +19,9 @@ define(['js/index'], function (app) {
 		function getAll(){
 			$http.get('/api/stations').success(function(data){
 				$scope.stations = data.data;
+				angular.extend(Values, {
+					stations: data.data
+				});
 			});
 			angular.extend($scope.data, {
 				id: null,

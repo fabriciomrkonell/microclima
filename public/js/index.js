@@ -64,6 +64,7 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 		}],
 		sensors: [],
 		stations: [],
+		users: [],
 		chartsDefault: 'Line',
 		flagMaps: 'img/flag.png'
 	});

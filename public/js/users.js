@@ -5,18 +5,19 @@ define(['js/index'], function (app) {
 
 		angular.extend($scope, {
 			data: {},
-			users: [],
+			users: Values.users,
 			groups: Values.groups
 		});
 
 		function getAll(){
 			$http.get('/api/users').success(function(data){
 				$scope.users = data.data;
+				angular.extend(Values, {
+					users: data.data
+				});
 			});
 			clearUser();
 		};
-
-		getAll();
 
 		function clearUser(){
 			angular.extend($scope.data, {
@@ -49,6 +50,10 @@ define(['js/index'], function (app) {
 				}
 			}
 		};
+
+		if($scope.users.length == 0){
+			getAll();
+		}
 
 	}]);
 });
