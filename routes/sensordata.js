@@ -5,6 +5,12 @@ var models  = require('../models'),
     error = require('../error/error'),
     router  = express.Router();
 
+function getHours(date){
+  var d = new Date(date);
+  d.setHours(d.getHours() - 3)
+  return d;
+};
+
 router.get('/', function(req, res) {
  	models.SensorData.count().then(function(data) {
     res.send({ error: 0, data: data });
@@ -45,7 +51,7 @@ router.post('/', function(req, res) {
 router.post('/data', function(req, res) {
   if(req.body.daterange){
     req.body.data.createdAt = {
-      between: [ req.body.daterange.startDate, req.body.daterange.endDate ]
+      between: [ getHours(req.body.daterange.startDate), getHours(req.body.daterange.endDate) ]
     }
   }
   models.SensorData.findAll({
