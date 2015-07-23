@@ -43,6 +43,11 @@ router.post('/', function(req, res) {
 });
 
 router.post('/data', function(req, res) {
+  if(req.body.daterange){
+    req.body.data.createdAt = {
+      between: [ req.body.daterange.startDate, req.body.daterange.endDate ]
+    }
+  }
   models.SensorData.findAll({
     limit: 10,
     where: req.body.data,
