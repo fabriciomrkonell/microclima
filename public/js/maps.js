@@ -11,8 +11,8 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
     });
 
     $('#daterange').daterangepicker({
-        startDate: $scope.daterange.startDate,
-        endDate: $scope.daterange.endDate,
+        startDate: new Date(),
+        endDate: new Date(),
         timePicker24Hour: true,
         timePicker: true,
         timePickerIncrement: 30,
