@@ -147,7 +147,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
 
     function getHours(date){
       var d = new Date(date);
-      d.setHours(d.getHours())
+      d.setHours(d.getHours() - 3)
       return d;
     };
 
