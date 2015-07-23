@@ -3,15 +3,30 @@
 define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetimepicker) {
 	app.controller('maps', ['$scope', '$http', '$rootScope', 'Chart', 'Values', function($scope, $http, $rootScope, Chart, Values){
 
-    $('input[name="daterange"]').daterangepicker({
-        startDate: new Date(),
-        endDate: new Date(),
+    $scope.daterange = {};
+
+    angular.extend($scope.daterange, {
+      startDate: new Date(),
+      endDate: new Date()
+    });
+
+    $('#daterange').daterangepicker({
+        startDate: $scope.daterange.startDate,
+        endDate: $scope.daterange.endDate,
         timePicker24Hour: true,
         timePicker: true,
         timePickerIncrement: 30,
         locale: {
-            format: 'DD/MM/YYYY hh:mm'
+          format: 'DD/MM/YYYY hh:mm'
         }
+    }, function(start, end, label){
+      angular.extend($scope.daterange, {
+        startDate: start._d,
+        endDate: end._d
+      });
+      if(!$scope.$$phase){
+        $scope.$digest();
+      }
     });
 
 		var defaultHeight = 129;

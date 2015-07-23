@@ -50,7 +50,7 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>Período</label>
-                  <input type="text" class="form-control" name="daterange" />
+                  <input type="text" class="form-control" id="daterange" />
                 </div>
               </div>
               <div class="col-sm-4">
@@ -62,6 +62,7 @@
                 </div>
               </div>
               <div class="col-sm-2">
+                {{daterange}}
                 <label>&nbsp;</label>
                 <button type="button" style="display:-webkit-box" class="btn btn-default" ng-click="showView(typeDefault, configurations.search.sensorData)">Pesquisar</button>
               </div>
