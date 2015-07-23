@@ -6,8 +6,12 @@ var models  = require('../models'),
     router  = express.Router();
 
 function getHours(date){
+  console.log("Iniício:");
+  console.log(date);
   var d = new Date(date);
   d.setHours(d.getHours() - 3)
+  console.log("Fim:");
+  console.log(d);
   return d;
 };
 
