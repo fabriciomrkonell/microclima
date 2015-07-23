@@ -56,13 +56,14 @@
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>Tipo de visualização</label>
-                  <select class="form-control text-center" ng-model="typeDefault" ng-change="showView(typeDefault, configurations.search.sensorData)">
+                  <select class="form-control text-center" ng-model="typeDefault">
                     <option value="{{typeValue.value}}" ng-repeat="typeValue in types">{{typeValue.name}}</option>
                   </select>
                 </div>
               </div>
-              <div class="col-sm-4">
-                <button type="button" class="btn btn-sm">Pesquisar</button>
+              <div class="col-sm-2">
+                <label>&nbsp;</label>
+                <button type="button" style="display:-webkit-box" class="btn btn-default" ng-click="showView(typeDefault, configurations.search.sensorData)">Pesquisar</button>
               </div>
             </div>
             <div id="charts" class="col-md-12" style="height: 200px"></div>
