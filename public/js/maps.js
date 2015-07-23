@@ -6,8 +6,8 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
     $scope.daterange = {};
 
     angular.extend($scope.daterange, {
-      startDate: new Date(),
-      endDate: new Date()
+      startDate: getHours(new Date()),
+      endDate: getHours(new Date())
     });
 
     $('#daterange').daterangepicker({
@@ -21,8 +21,8 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
         }
     }, function(start, end, label){
       angular.extend($scope.daterange, {
-        startDate: start._d,
-        endDate: end._d
+        startDate: getHours(start._d),
+        endDate: getHours(end._d)
       });
       if(!$scope.$$phase){
         $scope.$digest();
@@ -105,7 +105,8 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
         data: {
           SensorId: sensor,
           StationId: station
-        }
+        },
+        DateRange: $scope.daterange
       }).success(function(data){
         $scope.configurations.search.sensorData = data.data;
         $scope.showView($scope.typeDefault, $scope.configurations.search.sensorData);
@@ -142,6 +143,12 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
       if(!$scope.$$phase){
         $scope.$digest();
       }
+    };
+
+    function getHours(date){
+      var d = new Date(date);
+      d.setHours(d.getHours() - 3)
+      return d;
     };
 
 	}]);

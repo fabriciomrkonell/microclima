@@ -20,7 +20,7 @@
       </div>
       <div class="modal-body" style="padding: 0px">
         <ul class="nav nav-tabs">
-          <li ng-class="{ active: configurations.active == sensors.SensorId }" ng-repeat="sensors in data.station.StationSensors" ng-click="getSensorData(sensors.SensorId, data.station.id)">
+          <li ng-class="{ active: configurations.active == sensors.SensorId }" ng-repeat="sensors in data.station.StationSensors">
             <a href="#">{{sensors.Sensor.description}}
             </a>
           </li>
@@ -62,9 +62,8 @@
                 </div>
               </div>
               <div class="col-sm-2">
-                {{daterange}}
                 <label>&nbsp;</label>
-                <button type="button" style="display:-webkit-box" class="btn btn-default" ng-click="showView(typeDefault, configurations.search.sensorData)">Pesquisar</button>
+                <button type="button" style="display:-webkit-box" class="btn btn-default" ng-click="getSensorData(configurations.active, data.station.id)">Pesquisar</button>
               </div>
             </div>
             <div id="charts" class="col-md-12" style="height: 200px"></div>
