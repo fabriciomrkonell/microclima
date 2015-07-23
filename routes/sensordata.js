@@ -9,7 +9,7 @@ function getHours(date){
   console.log("Início:");
   console.log(date);
   var d = new Date(date);
-  d.setHours(d.getHours() + 4)
+  d.setHours(d.getHours() + 3)
   console.log("Fim:");
   console.log(d);
   return d;
