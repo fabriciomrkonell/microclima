@@ -20,7 +20,7 @@
       </div>
       <div class="modal-body" style="padding: 0px">
         <ul class="nav nav-tabs">
-          <li ng-class="{ active: configurations.active == sensors.SensorId }" ng-repeat="sensors in data.station.StationSensors">
+          <li ng-class="{ active: configurations.active == sensors.SensorId }" ng-repeat="sensors in data.station.StationSensors" ng-click="getSensorData(sensors.SensorId, data.station.id)">
             <a href="#">{{sensors.Sensor.description}}
             </a>
           </li>

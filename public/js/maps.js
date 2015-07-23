@@ -106,7 +106,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
           SensorId: sensor,
           StationId: station
         },
-        DateRange: $scope.daterange
+        daterange: $scope.daterange
       }).success(function(data){
         $scope.configurations.search.sensorData = data.data;
         $scope.showView($scope.typeDefault, $scope.configurations.search.sensorData);
