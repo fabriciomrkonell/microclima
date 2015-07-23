@@ -13,10 +13,14 @@ require.config({
     'chart': '/vendor/chart/js/chart.min',
     'morris': '/vendor/morris/js/morris.min',
     'eve': '/vendor/eve/js/eve',
-    'raphael': '/vendor/raphael/js/raphael.min'
+    'raphael': '/vendor/raphael/js/raphael.min',
+    'moment': '/vendor/moment/min/moment.min',
+    'datetimepicker': '/vendor/datetimepicker/js/bootstrap-datetimepicker.min'
   },
   shim: {
     'angular': ['jquery'],
+    'datetimepicker': ['moment'],
+    'moment': ['jquery'],
     'chart': ['jquery'],
     'skycons': ['jquery'],
     'raphael': ['eve'],

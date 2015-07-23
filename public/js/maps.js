@@ -1,7 +1,18 @@
 'use strict';
 
-define(['js/index', 'morris'], function (app, morris) {
+define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetimepicker) {
 	app.controller('maps', ['$scope', '$http', '$rootScope', 'Chart', 'Values', function($scope, $http, $rootScope, Chart, Values){
+
+    $('input[name="daterange"]').daterangepicker({
+        startDate: new Date(),
+        endDate: new Date(),
+        timePicker24Hour: true,
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+            format: 'DD/MM/YYYY hh:mm'
+        }
+    });
 
 		var defaultHeight = 129;
 
