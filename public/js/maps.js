@@ -88,6 +88,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
     $scope.getSensorData = function(sensor, station){
       setDiv();
       $scope.configurations.active = sensor;
+      alert(convertDateJQueryToAngular($('#daterange').val().split(" - ")[0]));
       $http.post('/api/sensordata/data', {
         data: {
           SensorId: sensor,
@@ -136,7 +137,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
     };
 
     function convertDateJQueryToAngular(date){
-      var d = getHours(date);
+      var d = new Date(date);
       d.setDate(date.split("/")[0]);
       d.setMonth(date.split("/")[1] - 1);
       d.setFullYear(date.split("/")[2].split(" ")[0]);
