@@ -94,8 +94,8 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
           StationId: station
         },
         daterange: {
-          startDate: convertDateJQueryToAngular($('#daterange').val().split("-")[0]),
-          endDate: convertDateJQueryToAngular($('#daterange').val().split("-")[1])
+          startDate: convertDateJQueryToAngular($('#daterange').val().split(" - ")[0]),
+          endDate: convertDateJQueryToAngular($('#daterange').val().split(" - ")[1])
         }
       }).success(function(data){
         $scope.configurations.search.sensorData = data.data;
