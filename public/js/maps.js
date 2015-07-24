@@ -5,28 +5,15 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
 
     $scope.daterange = {};
 
-    angular.extend($scope.daterange, {
-      startDate: getHours(new Date()),
-      endDate: getHours(new Date())
-    });
-
     $('#daterange').daterangepicker({
         startDate: new Date(),
         endDate: new Date(),
         timePicker24Hour: true,
         timePicker: true,
-        timePickerIncrement: 30,
+        timePickerIncrement: 5,
         locale: {
           format: 'DD/MM/YYYY hh:mm'
         }
-    }, function(start, end, label){
-      angular.extend($scope.daterange, {
-        startDate: getHours(start._d),
-        endDate: getHours(end._d)
-      });
-      if(!$scope.$$phase){
-        $scope.$digest();
-      }
     });
 
 		var defaultHeight = 129;
@@ -106,7 +93,10 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
           SensorId: sensor,
           StationId: station
         },
-        daterange: $scope.daterange
+        daterange: {
+          startDate: convertDateJQueryToAngular($('#daterange').val().split("-")[0]),
+          endDate: convertDateJQueryToAngular($('#daterange').val().split("-")[1])
+        }
       }).success(function(data){
         $scope.configurations.search.sensorData = data.data;
         $scope.showView($scope.typeDefault, $scope.configurations.search.sensorData);
@@ -148,6 +138,17 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
     function getHours(date){
       var d = new Date(date);
       d.setHours(d.getHours() - 3)
+      return d;
+    };
+
+    function convertDateJQueryToAngular(date){
+      var d = new Date(date);
+      d.setDate(date.split("/")[0]);
+      d.setMonth(date.split("/")[1] - 1);
+      d.setFullYear(date.split("/")[2].split(" ")[0]);
+      d.setHours(date.split("/")[2].split(" ")[1].split(":")[0]);
+      d.setMinutes(date.split("/")[2].split(" ")[1].split(":")[1]);
+      d.setSeconds(0);
       return d;
     };
 
