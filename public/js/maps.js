@@ -135,18 +135,12 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
       }
     };
 
-    function getHours(date){
-      var d = new Date(date);
-      d.setHours(d.getHours() - 3)
-      return d;
-    };
-
     function convertDateJQueryToAngular(date){
       var d = getHours(date);
       d.setDate(date.split("/")[0]);
       d.setMonth(date.split("/")[1] - 1);
       d.setFullYear(date.split("/")[2].split(" ")[0]);
-      d.setHours(date.split("/")[2].split(" ")[1].split(":")[0]);
+      d.setHours(parseInt(date.split("/")[2].split(" ")[1].split(":")[0]) - 3);
       d.setMinutes(date.split("/")[2].split(" ")[1].split(":")[1]);
       d.setSeconds(0);
       return d;
