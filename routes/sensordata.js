@@ -70,7 +70,7 @@ router.get('/station/:idStation', function(req, res) {
     attributes: ['valueData'],
     group: ['sensorId'],
     order: [
-      ['createdAt', 'DESC']
+      ['createdAt', 'ASC']
     ],
     where: {
       StationId: req.param('idStation')
