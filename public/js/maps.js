@@ -5,9 +5,11 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
 
     $scope.daterange = {};
 
+    var _date = new Date();
+
     $('#daterange').daterangepicker({
         startDate: new Date(),
-        endDate: new Date(),
+        endDate: _date,
         timePicker24Hour: true,
         timePicker: true,
         timePickerIncrement: 5,
