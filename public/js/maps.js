@@ -140,11 +140,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
       d.setDate(date.split("/")[0]);
       d.setMonth(date.split("/")[1] - 1);
       d.setFullYear(date.split("/")[2].split(" ")[0]);
-      if(date.split("/")[2].split(" ")[2] == 'AM'){
-        d.setHours(parseInt(date.split("/")[2].split(" ")[1].split(":")[0]) - 3);
-      }else{
-        d.setHours(parseInt(date.split("/")[2].split(" ")[1].split(":")[0]) - 3 + 12);
-      }
+      d.setHours(parseInt(date.split("/")[2].split(" ")[1].split(":")[0]) - 3);
       d.setMinutes(date.split("/")[2].split(" ")[1].split(":")[1]);
       d.setSeconds(0);
       return d;
