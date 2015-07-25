@@ -7,7 +7,7 @@ var models  = require('../models'),
 
 function getHours(date){
   var d = new Date(date);
-  d.setHours(d.getHours() + 4)
+  d.setHours(d.getHours() + 3)
   return d;
 };
 
