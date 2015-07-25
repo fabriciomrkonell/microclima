@@ -47,7 +47,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
       }
     });
 
-    $('#modal').on('shown.bs.modal', function (){
+    $('#modal').on('shown.bs.modal', function (e){
       $scope.getSensorData($scope.configurations.search.SensorId, $scope.data.station.id);
     });
 
@@ -86,21 +86,23 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
     });
 
     $scope.getSensorData = function(sensor, station){
-      setDiv();
-      $scope.configurations.active = sensor;
-      $http.post('/api/sensordata/data', {
-        data: {
-          SensorId: sensor,
-          StationId: station
-        },
-        daterange: {
-          startDate: convertDateJQueryToAngular($('#daterange').val().split(" - ")[0]),
-          endDate: convertDateJQueryToAngular($('#daterange').val().split(" - ")[1])
-        }
-      }).success(function(data){
-        $scope.configurations.search.sensorData = data.data;
-        $scope.showView($scope.typeDefault, $scope.configurations.search.sensorData);
-      });
+      if(getValidDate($('#daterange').val().split(" - ")[0], $('#daterange').val().split(" - ")[1])){
+        setDiv();
+        $scope.configurations.active = sensor;
+        $http.post('/api/sensordata/data', {
+          data: {
+            SensorId: sensor,
+            StationId: station
+          },
+          daterange: {
+            startDate: convertDateJQueryToAngular($('#daterange').val().split(" - ")[0]),
+            endDate: convertDateJQueryToAngular($('#daterange').val().split(" - ")[1])
+          }
+        }).success(function(data){
+          $scope.configurations.search.sensorData = data.data;
+          $scope.showView($scope.typeDefault, $scope.configurations.search.sensorData);
+        });
+      }
     };
 
     $scope.showView = function(typeDefault, data){
@@ -144,6 +146,15 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
       d.setMinutes(date.split("/")[2].split(" ")[1].split(":")[1]);
       d.setSeconds(0);
       return d;
+    };
+
+    function getValidDate(startDate, endDate){
+      var comparation = "Data inválida!";
+      if(startDate == comparation || endDate == comparation){
+        alert(comparation);
+        return false;
+      }
+      return true;
     };
 
 	}]);

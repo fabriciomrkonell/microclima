@@ -54,7 +54,6 @@ router.post('/data', function(req, res) {
       between: [ getHours(req.body.daterange.startDate), getHours(req.body.daterange.endDate) ]
     }
   }
-  console.log(req.body.data.createdAt.between);
   models.SensorData.findAll({
     where: req.body.data,
     attributes: ['valueData', [models.sequelize.fn('date_format', models.sequelize.col('createdAt'), '%Y-%m-%d %H:%i'), 'dateCreate']],
