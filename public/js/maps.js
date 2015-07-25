@@ -36,8 +36,8 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
           return function() {
             $scope.data.station = marker.station;
             if(marker.station.StationSensors.length > 0){
-              $scope.configurations.active = marker.station.StationSensors[0].SensorId;
-              $scope.configurations.search = marker.station.StationSensors[0];
+              $scope.configurations.active = -1;
+              $scope.geral = [];
               $('#modal').modal();
             }else{
               alert('Não existe nenhum sensor nesta estação!');
@@ -50,7 +50,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
     });
 
     $('#modal').on('shown.bs.modal', function (e){
-      $scope.getSensorData($scope.configurations.search.SensorId, $scope.data.station.id);
+      $scope.getSensorDataGeral($scope.data.station.id);
     });
 
     $('#modal').on('hidden.bs.modal', function (){
@@ -75,6 +75,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
 
     angular.extend($scope, {
       stations: [],
+      geral: [],
       data: {
         station: {}
       },
@@ -82,7 +83,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
         search: {},
         active: false
       },
-      loader: true,
+      loader: 1,
       typeDefault: Values.chartsDefault,
       types: Values.charts
     });
@@ -107,6 +108,15 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
       }
     };
 
+    $scope.getSensorDataGeral = function(station){
+      setDiv();
+      $scope.configurations.active = -1;
+      $http.get('/api/sensordata/station/' + station).success(function(data){
+        $scope.geral = data.data;
+        $scope.loader = 3;
+      });
+    };
+
     $scope.showView = function(typeDefault, data){
       setDiv();
       Chart.showChart(typeDefault, data, $scope.getNameSensor());
@@ -124,7 +134,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
 
     function showView(){
       $('#tab-content').css('display', 'flex');
-      $scope.loader = false;
+      $scope.loader = 2;
       if(!$scope.$$phase){
         $scope.$digest();
       }
@@ -133,7 +143,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
     function setDiv(){
       $("#charts").text("");
       $('#tab-content').css('display', '');
-      $scope.loader = true;
+      $scope.loader = 1;
       if(!$scope.$$phase){
         $scope.$digest();
       }

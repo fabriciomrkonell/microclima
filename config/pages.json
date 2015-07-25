@@ -16,6 +16,7 @@
       "/api/users/profile",
       "/api/users/password",
       "/api/sensordata/data",
+      "/api/sensordata/station",
       "/api/sensors",
       "/api/stations/sensors",
       "/api/stationssensors",
@@ -34,6 +35,7 @@
       "/menu",
       "/api/users/profile",
       "/api/users/password",
+      "/api/sensordata/station",
       "/api/sensordata/data",
       "/api/stations/sensors"
     ]

@@ -20,14 +20,16 @@
       </div>
       <div class="modal-body" style="padding: 0px">
         <ul class="nav nav-tabs">
+          <li ng-class="{ active: configurations.active == '-1' }" ng-click="getSensorDataGeral(data.station.id)">
+            <a href="#">Geral</a>
+          </li>
           <li ng-class="{ active: configurations.active == sensors.SensorId }" ng-repeat="sensors in data.station.StationSensors" ng-click="getSensorData(sensors.SensorId, data.station.id)">
-            <a href="#">{{sensors.Sensor.description}}
-            </a>
+            <a href="#">{{sensors.Sensor.description}}</a>
           </li>
         </ul>
         <div class="tab-content" id="tab-content">
           <div class="tab-pane active">
-            <div class="panel-body loader-demo" ng-show="loader">
+            <div class="panel-body loader-demo" ng-show="loader == 1">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="50" height="50" fill="#23b7e5" ng-show="loader">
                 <path transform="translate(2)" d="M0 12 V20 H4 V12z">
                   <animate attributeName="d" values="M0 12 V20 H4 V12z; M0 4 V28 H4 V4z; M0 12 V20 H4 V12z; M0 12 V20 H4 V12z" dur="1.2s" repeatCount="indefinite" begin="0" keytimes="0;.2;.5;1" keySplines="0.2 0.2 0.4 0.8;0.2 0.6 0.4 0.8;0.2 0.8 0.4 0.8" calcMode="spline"  />
@@ -46,7 +48,17 @@
                 </path>
               </svg>
             </div>
-            <div class="row" ng-show="!loader">
+            <div class="row" ng-show="loader == 3">
+              <div class="col-sm-4" ng-repeat="obj in geral">
+                <div class="panel widget">
+                  <div class="panel-body bg-default text-center">
+                    <div class="text-lg">{{obj.valueData}}</div>
+                    <p>{{obj.Sensor.description}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" ng-show="loader == 2">
               <div class="col-sm-4">
                 <div class="form-group">
                   <label>Período</label>

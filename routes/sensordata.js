@@ -65,4 +65,25 @@ router.post('/data', function(req, res) {
   });
 });
 
+router.get('/station/:idStation', function(req, res) {
+  models.SensorData.findAll({
+    attributes: ['valueData'],
+    group: ['sensorId'],
+    order: [
+      ['createdAt', 'DESC']
+    ],
+    where: {
+      StationId: req.param('idStation')
+    },
+    include: [{
+      model: models.Sensor,
+      attributes: ['description']
+    }]
+  }).then(function(data) {
+    res.send({ error: 0, data: data });
+  }).catch(function(err) {
+    res.send(err);
+  });
+});
+
 module.exports = router;
