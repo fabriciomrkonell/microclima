@@ -8,7 +8,7 @@ define(['js/index', 'morris', 'datetimepicker'], function (app, morris, datetime
     var _date = new Date();
 
     $('#daterange').daterangepicker({
-        startDate: new Date(),
+        startDate: new Date(_date.getFullYear(), _date.getMonth(), _date.getDate(), 0, 0),
         endDate: _date,
         timePicker24Hour: true,
         timePicker: true,
