@@ -21,13 +21,35 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 
 	angular.module('sensul').service('Chart', function(){
 
+		function propComparator(prop) {
+    	return function(a, b) {
+        return a[prop] - b[prop];
+    	}
+		}
+
   	this.showChart = function(type, data, label){
+
+  		var ymax = data;
+  		if(ymax.length > 0){
+  			ymax = parseFloat(parseFloat(ymax.sort(propComparator('valueData')).reverse()[0].valueData).toFixed(2)) + 1;
+  		}else{
+  			ymax = 0;
+  		}
+
+  		var ymin = data;
+  		if(ymin.length > 0){
+  			ymin = parseFloat(parseFloat(ymin.sort(propComparator('valueData'))[0].valueData).toFixed(2)) - 1;
+  		}else{
+  			ymin = 0;
+  		}
 
   		var configs = {
         element: 'charts',
         data: data,
         xkey: 'dateCreate',
         ykeys: ['valueData'],
+        ymin: ymin,
+        ymax: ymax,
         labels: [label],
        	xLabelFormat: function(date) {
         	var d = new Date(date.label || date);
