@@ -31,17 +31,22 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 
   		var ymax = data;
   		if(ymax.length > 0){
-  			ymax = parseFloat(parseFloat(ymax.sort(propComparator('valueData')).reverse()[0].valueData).toFixed(2)) + 1;
+  			ymax = parseFloat(parseFloat(ymax.sort(propComparator('valueData')).reverse()[0].valueData).toFixed(2));
   		}else{
   			ymax = 0;
   		}
 
   		var ymin = data;
   		if(ymin.length > 0){
-  			ymin = parseFloat(parseFloat(ymin.sort(propComparator('valueData'))[0].valueData).toFixed(2)) - 1;
+  			ymin = parseFloat(parseFloat(ymin.sort(propComparator('valueData'))[0].valueData).toFixed(2));
   		}else{
   			ymin = 0;
   		}
+
+  		var interval = (ymax - ymin) * 0.1;
+
+  		ymax = ymax + interval;
+  		ymin = ymin - interval;
 
   		var configs = {
         element: 'charts',
