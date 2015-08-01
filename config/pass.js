@@ -42,11 +42,7 @@ function validAuthenticationJSON(req, res, next){
       res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
     }
   }else{
-    if(getUrl(req._parsedOriginalUrl.path) == '/api/sensordata/station'){
-      next();
-    }else{
-      res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
-    }
+    res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
   }
 };
 
