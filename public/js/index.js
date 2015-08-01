@@ -45,8 +45,8 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 
 
   		var interval = (ymax - ymin) * 0.1;
-  		ymax = parseFloat((ymax + interval).toFixed(2));
-  		ymin = parseFloat((ymin - interval).toFixed(2));
+  		ymax = ymax + interval;
+  		ymin = ymin - interval;
 
 
   		var configs = {
