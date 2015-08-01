@@ -52,7 +52,7 @@
               <div class="col-sm-4" ng-repeat="obj in geral">
                 <div class="panel widget">
                   <div class="panel-body bg-default text-center">
-                    <div class="text-lg">{{obj.valueData}}</div>
+                    <div class="text-lg">{{obj.valueData}} <label class="text-md">{{obj.Sensor.unit}}</label></div>
                     <p>{{obj.Sensor.description}}</p>
                   </div>
                 </div>
@@ -65,7 +65,7 @@
                   <input type="text" class="form-control" id="daterange" />
                 </div>
               </div>
-              <div class="col-sm-4">
+              <div class="col-sm-3">
                 <div class="form-group">
                   <label>Tipo de visualização</label>
                   <select class="form-control text-center" ng-model="typeDefault">

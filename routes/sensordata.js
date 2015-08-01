@@ -67,20 +67,26 @@ router.post('/data', function(req, res) {
 
 router.get('/station/:idStation', function(req, res) {
   models.SensorData.findAll({
-    attributes: ['valueData'],
-    group: ['sensorId'],
-    order: [
-      ['createdAt', 'ASC']
-    ],
+    attributes: ['sensorId', 'valueData'],
+    limit: 50,
+    order: 'SensorData.id DESC',
     where: {
       StationId: req.param('idStation')
     },
     include: [{
       model: models.Sensor,
-      attributes: ['description']
+      attributes: ['description', 'unit']
     }]
   }).then(function(data) {
-    res.send({ error: 0, data: data });
+    var array = [],
+        response = [];
+    for(var i = 0; i < data.length; i++){
+      if(array.indexOf(data[i].dataValues.sensorId) == '-1'){
+        response.push(data[i]);
+        array.push(data[i].dataValues.sensorId);
+      }
+    };
+    res.send({ error: 0, data: response });
   }).catch(function(err) {
     res.send(err);
   });

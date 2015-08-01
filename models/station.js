@@ -30,6 +30,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Station.hasMany(models.StationSensor, { onDelete: 'cascade' });
+        Station.hasMany(models.SensorData, { onDelete: 'cascade' });
       }
     }
   });

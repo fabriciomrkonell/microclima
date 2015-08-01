@@ -7,7 +7,7 @@ var models  = require('../models'),
 
 router.get('/', function(req, res) {
   models.Sensor.findAll({
-    attributes: ['id', 'description']
+    attributes: ['id', 'description', 'unit']
   }).then(function(data) {
     res.send({ error: 0, data: data });
   }).catch(function(err) {
@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
   if(req.body.id){
     models.Sensor.find({
-      attributes: ['id', 'description'],
+      attributes: ['id', 'description', 'unit'],
       where: {
         id: req.body.id
       }

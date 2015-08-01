@@ -9,11 +9,16 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         notEmpty: { msg: 'A descrição é inválida!' }
       }
+    },
+    unit: {
+      type: DataTypes.STRING,
+      defaultValue: 'ºC'
     }
   }, {
     classMethods: {
       associate: function(models) {
         Sensor.hasMany(models.StationSensor, { onDelete: 'cascade' });
+        Sensor.hasMany(models.SensorData, { onDelete: 'cascade' });
       }
     }
   });

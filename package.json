@@ -18,6 +18,7 @@
     "passport": "~0.1.15",
     "passport-local": "~0.1.6",
     "passport-strategy": "1.x.x",
-    "password-hash": ">=0.0.0"
+    "password-hash": ">=0.0.0",
+    "sequelize-migrator": ">=1.1.5"
   }
 }

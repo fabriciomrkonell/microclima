@@ -6,9 +6,11 @@ define(['js/index'], function (app) {
 		angular.extend($scope, {
 			data: {
 				id: null,
-				description: ''
+				description: '',
+				unit: null
 			},
-			sensors: Values.sensors
+			sensors: Values.sensors,
+			units: Values.units
 		});
 
 		function getAll(){
@@ -20,7 +22,8 @@ define(['js/index'], function (app) {
 			});
 			angular.extend($scope.data, {
 				id: null,
-				description: ''
+				description: '',
+				unit: null
 			});
 		};
 

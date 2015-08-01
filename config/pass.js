@@ -45,7 +45,11 @@ function validAuthenticationJSON(req, res, next){
       res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
     }
   }else{
-    res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
+    if(getUrl(req._parsedOriginalUrl.path) == '/api/sensordata/station'){
+      next();
+    }else{
+      res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
+    }
   }
 };
 
@@ -54,14 +58,14 @@ function validAuthenticationPostJSON(req, res, next){
     if(config[req.user.group].api.indexOf(getUrl(req._parsedOriginalUrl.path)) != '-1'){
       next();
     }else{
-      if(getUrl(req._parsedOriginalUrl.path) == '/api/sensordata/data'){
-        next();
-      }else{
-        res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
-      }
+      res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
     }
   }else{
-    res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
+    if(getUrl(req._parsedOriginalUrl.path) == '/api/sensordata/data'){
+      next();
+    }else{
+      res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
+    }
   }
 };
 

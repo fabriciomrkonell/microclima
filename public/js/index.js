@@ -90,6 +90,11 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 			id: 2,
 			name: 'Cliente'
 		}],
+		units: [{
+			description: 'ºC'
+		},{
+			description: '%'
+		}],
 		sensors: [],
 		stations: [],
 		users: [],
