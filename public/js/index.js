@@ -94,6 +94,8 @@ define(['angularAMD', 'ngRoute', 'ngAnimate'], function (angularAMD, ngRoute, ng
 			description: 'ºC'
 		},{
 			description: '%'
+		},{
+			description: 'kPa'
 		}],
 		sensors: [],
 		stations: [],

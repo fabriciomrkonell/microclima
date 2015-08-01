@@ -2,9 +2,9 @@
 
 module.exports = {
   up: function(migration, DataTypes) {
-    migration.addColumn(
+    migration.removeColumn(
       'Sensors',
-      'unit',
+      'teste',
       {
         type: DataTypes.STRING,
         defaultValue: 'ºC'

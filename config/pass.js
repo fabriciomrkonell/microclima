@@ -39,9 +39,6 @@ function validAuthenticationJSON(req, res, next){
     if(config[req.user.group].api.indexOf(getUrl(req._parsedOriginalUrl.path)) != '-1'){
       next();
     }else{
-      console.log("----------------------------");
-      console.log(getUrl(req._parsedOriginalUrl.path));
-      console.log("----------------------------");
       res.send({ error: 2, message: 'Usuário sem permissão de acesso!' });
     }
   }else{
